@@ -9,7 +9,8 @@ Vote Counting
 
 # Authors
 
-* Jose Labra
+* Damián Prieto
+* Jorge Rodríguez
 
 
 
