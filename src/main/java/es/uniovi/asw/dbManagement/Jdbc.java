@@ -12,20 +12,21 @@ public class Jdbc {
 	private static String USER = "";
 	private static String PASS = "";
 */
-/* Configuration for Hsqldb
-*/	
-//	private static String DRIVER = "org.hsqldb.jdbcDriver";
-//	private static String URL = "jdbc:hsqldb:hsql://localhost";
-//	private static String USER = "sa";
-//	private static String PASS = "";
+/* Configuration for Hsqldb 
 	
-/*
-	Configuration for h2
-*/
+	private static String DRIVER = "org.hsqldb.jdbcDriver";
+	private static String URL = "jdbc:hsqldb:hsql://localhost";
+	private static String USER = "sa";
+	private static String PASS = "";
+	
+
+	Configuration for h2*/
+
 	private static final String DRIVER  ="org.h2.Driver";
 	private static String URL = "jdbc:h2:~/test";
 	private static String USER = "sa";
 	private static String PASS = "";
+	
 	
 	static {
 		try {
@@ -37,10 +38,11 @@ public class Jdbc {
 	}
 	
 	public static Connection getConnection() throws SQLException {
+		
 		return DriverManager.getConnection(URL, USER, PASS);
 	}
 
-	public static Connection createThreadConnection() throws SQLException {
+	public static Connection createThreadConnection() throws SQLException{
 		Connection con = getConnection();
 		con.setAutoCommit( false );
 		threadConnection.set(con);

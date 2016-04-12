@@ -17,7 +17,7 @@ public class Main {
 
   private static final Logger LOG = LoggerFactory.getLogger(Main.class);
 
-  @RequestMapping("/")
+  @RequestMapping("/prueba")
   public ModelAndView landing(Model model) {
     LOG.info("Landing page access");
     mostrarColegios();
