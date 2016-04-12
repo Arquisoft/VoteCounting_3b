@@ -10,16 +10,16 @@ import es.uniovi.asw.dbManagement.Jdbc;
 
 public class VotosManuales {
 
-	public Map<String, Integer> getVotosColegio(String colegio) {
+	public Map<Integer, Integer> getVotosColegio(Integer colegio) {
 			Connection c = null;
-			Map<String,Integer> m = new HashMap<String,Integer>();
+			Map<Integer,Integer> m = new HashMap<Integer,Integer>();
 
 			try {
 				c = Jdbc.getConnection();
 				PreparedStatement ps = c.prepareStatement("SELECT COUNT(*) FROM TABLE VOTOS WHERE CODCOLEGIOELECTORAL = ?");
-				ps.setString(1, colegio);
+				ps.setInt(1, colegio);
 				ResultSet rs = ps.executeQuery();
-				m.put(colegio, Integer.parseInt(rs.getString(0)));
+				m.put(colegio,rs.getInt(1));
 				c.close();
 
 			} catch (Throwable e) {

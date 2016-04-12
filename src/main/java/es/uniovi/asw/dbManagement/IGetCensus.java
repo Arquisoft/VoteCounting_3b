@@ -9,11 +9,13 @@ public interface IGetCensus {
 	 * Recuento de electores por colegio
 	 * @return mapa con colegios y número de electores
 	 */
-	public Map<String,Integer> getCensoPorColegio();
+	public Map<Integer,Integer> getCensoPorColegio();
 	
 	/***
 	 * Lista de colegios. Util para llevar registro de colegios cerrados
 	 */
-	public List<String> getColegios();
+	public List<Integer> getColegios();
+
+	public Integer getTotalCenso();
 
 }

@@ -9,17 +9,17 @@ import es.uniovi.asw.dbManagement.impl.classes.VotosManuales;
 public class GetVotesInfo implements IGetVotes{
 
 	@Override
-	public Map<String, Integer> getVotosElectronicos() {
-		return new VotosElectronicos().getVotos();
+	public Map<Integer, Integer> getVotosElectronicos() {
+		return VotosElectronicos.getVotos();
 	}
 
 	@Override
-	public Map<String, Integer> getVotosPorColegio(String colegio) {
+	public Map<Integer, Integer> getVotosPorColegio(Integer colegio) {
 		return new VotosManuales().getVotosColegio(colegio);
 	}
 
 	@Override
-	public Map<String, Integer> getVotosPorComunidad(String comunidad) {
+	public Map<Integer, Integer> getVotosPorComunidad(String comunidad) {
 		return null;
 	}
 

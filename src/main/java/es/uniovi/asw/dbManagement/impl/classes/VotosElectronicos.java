@@ -10,18 +10,18 @@ import es.uniovi.asw.dbManagement.Jdbc;
 
 public class VotosElectronicos {
 
-	public static Map<String, Integer> getVotos() {
-		Map<String, Integer> electronicos = new HashMap<String, Integer>();
+	public static Map<Integer, Integer> getVotos() {
+		Map<Integer, Integer> electronicos = new HashMap<Integer, Integer>();
 		Connection c = null;
 		try {
 			c = Jdbc.getConnection();
 			PreparedStatement ps = c.prepareStatement("SELECT CODCOLEGIOELECTORAL FROM TABLE VOTOS WHERE TIPO = 'ELECTRONICO'");
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				if(electronicos.containsKey(rs.getString(0)))
-					electronicos.replace(rs.getString(0), electronicos.get(rs.getString(0)), electronicos.get(rs.getString(0)+1));
+				if(electronicos.containsKey(rs.getInt("CODCOLEGIOELECTORAL")))
+					electronicos.replace(rs.getInt("CODCOLEGIOELECTORAL"), electronicos.get(rs.getInt("CODCOLEGIOELECTORAL")), electronicos.get(rs.getInt("CODCOLEGIOELECTORAL")+1));
 				else
-					electronicos.put(rs.getString(0), 0);
+					electronicos.put(rs.getInt("CODCOLEGIOELECTORAL"), 1);
 			}
 			c.close();
 

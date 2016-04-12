@@ -1,11 +1,11 @@
 package es.uniovi.asw.dbManagement;
 
-public class Mesa {
+public class Colegio {
 	
 	private String identificador;
 	private int numeroVotantes;
 	
-	public Mesa(String identificador, int numeroVotantes) {
+	public Colegio(String identificador, int numeroVotantes) {
 		super();
 		this.identificador = identificador;
 		this.numeroVotantes = numeroVotantes;
