@@ -15,15 +15,18 @@ import es.uniovi.asw.dbManagement.Jdbc;
  * 
  */
 public class Censo {
+	
+	Connection c=null;
+	PreparedStatement ps = null;
+	ResultSet rs = null;
 
 	public Map<Integer, Integer> getCensoPorColegio() {
-		Connection c = null;
 		Map<Integer, Integer> m = new HashMap<Integer, Integer>();
 
 		try {
 			c = Jdbc.getConnection();
-			PreparedStatement ps = c.prepareStatement("SELECT CODCOLEGIOELECTORAL FROM CENSOS");
-			ResultSet rs = ps.executeQuery();
+			ps = c.prepareStatement("SELECT CODCOLEGIOELECTORAL FROM CENSOS");
+			rs = ps.executeQuery();
 			while (rs.next()) {
 				if (m.containsKey(rs.getInt("CODCOLEGIOELECTORAL")))
 					m.replace(rs.getInt("CODCOLEGIOELECTORAL"), m.get(rs.getInt("CODCOLEGIOELECTORAL")),
@@ -55,6 +58,28 @@ public class Censo {
 			e.printStackTrace();
 		}
 		return total;
+	}
+
+	public Map<String, Integer> getCensoPorComunidad() {
+		Connection c = null;
+		Map<String,Integer> comunidades = new HashMap<String,Integer>();
+		try {
+			c = Jdbc.getConnection();
+			PreparedStatement ps = c.prepareStatement("SELECT * FROM CENSOS");
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()){
+				String key = rs.getString(rs.getString("COMUNIDAD"));
+				if(comunidades.containsKey(key))
+					comunidades.replace(key, comunidades.get(key), comunidades.get(key)+1);
+				else
+					comunidades.put(key, 1);
+			}
+			c.close();
+		} catch (Throwable e) {
+			System.out.println("Error al leer los datos de las mesas");
+			e.printStackTrace();
+		}
+		return comunidades;
 	}
 
 }

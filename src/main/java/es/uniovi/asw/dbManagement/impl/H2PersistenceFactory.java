@@ -9,12 +9,12 @@ public class H2PersistenceFactory implements PersistenceFactory {
 	@Override
 	public IGetCensus census() {
 		// TODO Auto-generated method stub
-		return  new GetCensusInfo();
+		return  new GetCensus();
 	}
 
 	@Override
 	public IGetVotes votes() {
 		// TODO Auto-generated method stub
-		return new GetVotesInfo();
+		return new GetVotes();
 	} 
 }

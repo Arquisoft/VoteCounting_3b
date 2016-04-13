@@ -7,23 +7,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 import es.uniovi.asw.dbManagement.Jdbc;
-import es.uniovi.asw.dbManagement.model.ColegioData;
+import es.uniovi.asw.dbManagement.model.PersonaData;
 
-public class Colegios {
+public class Personas {
+
 	Connection c = null;
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 
-	public List<ColegioData> getColegios() {
-
-		List<ColegioData> colegios = new ArrayList<ColegioData>();
+	public List<PersonaData> getPersonas() {
+		List<PersonaData> personas = new ArrayList<PersonaData>();
 
 		try {
 			c = Jdbc.getConnection();
-			ps = c.prepareStatement("SELECT * FROM COLEGIOELECTORAL");
+			ps = c.prepareStatement("SELECT * FROM CENSOS");
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				colegios.add(new ColegioData(rs.getString("COMUNIDAD"), rs.getInt("CODCOLEGIOELECTORAL")));
+				// (String nombre, String nIF, String email, int
+				// codColegioElectoral, String password) {
+				personas.add(new PersonaData(rs.getString("NOMBRE"), rs.getString("NIF"), rs.getString("EMAIL"),
+						rs.getInt("CODCOLEGIOELECTORAL"), rs.getString("PASSWORD")));
 			}
 			c.close();
 
@@ -31,7 +34,7 @@ public class Colegios {
 			System.out.println("Error al leer los datos de las mesas");
 			e.printStackTrace();
 		}
-		return colegios;
+		return personas;
 	}
 
 }
