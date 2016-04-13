@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import es.uniovi.asw.Factories;
+import es.uniovi.asw.dbManagement.model.ColegioData;
 
 
 @Controller
@@ -39,9 +40,9 @@ private void mostrarCensoPorColegios() {
 }
 
 private void mostrarColegios() {
-	List<Integer> colegios = Factories.persistence.census().getColegios();
-	for(Integer s:colegios){
-		System.out.println(s);
+	List<ColegioData> colegios = Factories.persistence.census().getColegios();
+	for(ColegioData s:colegios){
+		System.out.println(s.getComunidad());
 	}
 	if(colegios.isEmpty())
 		System.out.println("NO hay coles...");

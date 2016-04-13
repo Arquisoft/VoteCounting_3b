@@ -23,7 +23,7 @@ public class Colegios {
 			ps = c.prepareStatement("SELECT * FROM COLEGIOELECTORAL");
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				colegios.add(new ColegioData(rs.getString("COMUNIDAD"), rs.getInt("CODCOLEGIOELECTORAL")));
+				colegios.add(new ColegioData(rs.getString("COMUNIDAD"), rs.getInt("CODIGOCOLEGIOELECTORAL")));
 			}
 			c.close();
 
