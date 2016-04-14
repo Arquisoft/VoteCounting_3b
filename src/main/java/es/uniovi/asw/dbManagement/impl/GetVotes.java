@@ -4,13 +4,13 @@ import java.util.List;
 
 import es.uniovi.asw.dbManagement.Colegio;
 import es.uniovi.asw.dbManagement.IGetVotes;
-import es.uniovi.asw.dbManagement.impl.classes.Colegios;
 import es.uniovi.asw.dbManagement.impl.classes.Opciones;
+import es.uniovi.asw.dbManagement.impl.classes.Votantes;
 import es.uniovi.asw.dbManagement.impl.classes.Votos;
 import es.uniovi.asw.dbManagement.impl.classes.VotosElectronicos;
 import es.uniovi.asw.dbManagement.impl.classes.VotosManuales;
-import es.uniovi.asw.dbManagement.model.ColegioData;
 import es.uniovi.asw.dbManagement.model.OpcionData;
+import es.uniovi.asw.dbManagement.model.VotanteData;
 import es.uniovi.asw.dbManagement.model.VotoData;
 
 public class GetVotes implements IGetVotes{
@@ -45,5 +45,12 @@ public class GetVotes implements IGetVotes{
 	public List<VotoData> getVotos() {
 		return new Votos().getVotos();
 	}
+
+	@Override
+	public List<VotanteData> getVotantesPorColegio(String codColegioElectoral) {
+		// TODO Auto-generated method stub
+		return new Votantes().findByColegio(codColegioElectoral);
+	}
+
 
 }

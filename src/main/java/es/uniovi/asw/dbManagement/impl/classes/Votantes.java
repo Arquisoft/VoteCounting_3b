@@ -7,26 +7,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 import es.uniovi.asw.dbManagement.Jdbc;
-import es.uniovi.asw.dbManagement.model.PersonaData;
+import es.uniovi.asw.dbManagement.model.VotanteData;
 
-public class Personas {
+public class Votantes {
 
 	Connection c = null;
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 
-	public List<PersonaData> getPersonas() {
-		List<PersonaData> personas = new ArrayList<PersonaData>();
+	public List<VotanteData> findByColegio(String codColegioElectoral) {
+		List<VotanteData> votantes = new ArrayList<VotanteData>();
 
 		try {
 			c = Jdbc.getConnection();
-			ps = c.prepareStatement("SELECT * FROM CENSOS");
+			ps = c.prepareStatement("SELECT * FROM VOTANTE");
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				// (String nombre, String nIF, String email, int
-				// codColegioElectoral, String password) {
-				personas.add(new PersonaData(rs.getString("nombre"), rs.getString("nif"), rs.getString("email"),
-						rs.getString("codColegioElectoral"), rs.getString("password")));
+				votantes.add(new VotanteData(rs.getString("nif"), rs.getString("tipoVoto"), rs.getBoolean("estado"),
+						rs.getLong("idVotacion")));
 			}
 			c.close();
 
@@ -34,7 +32,7 @@ public class Personas {
 			System.out.println("Error al leer los datos de las mesas");
 			e.printStackTrace();
 		}
-		return personas;
+		return votantes;
 	}
 
 }

@@ -1,26 +1,26 @@
 package es.uniovi.asw.CountingSystem.impl;
 
 import es.uniovi.asw.CountingSystem.IGetCensusInfo;
-import es.uniovi.asw.CountingSystem.impl.classes.Votantes;
+import es.uniovi.asw.CountingSystem.impl.classes.PersonasCenso;
 
 public class GetCensusInfo implements IGetCensusInfo {
 
 	@Override
-	public int getVotantesPorColegio(int colegio) {
+	public int getVotantesPorColegio(String colegio) {
 		// TODO Auto-generated method stub
-		return new Votantes().findByColegio(colegio);
+		return new PersonasCenso().findByColegio(colegio);
 	}
 
 	@Override
 	public int getVotantesTotales() {
 		// TODO Auto-generated method stub
-		return new Votantes().findAll();
+		return new PersonasCenso().findAll();
 	}
 
 	@Override
 	public int getVotantesPorComunidad(String comunidad) {
 		// TODO Auto-generated method stub
-		return new Votantes().findByComunidad(comunidad);
+		return new PersonasCenso().findByComunidad(comunidad);
 	}
 	
 

@@ -1,11 +1,12 @@
 package es.uniovi.asw.dbManagement.model;
 
 public class VotoData {
+	Long id;
 	String tipoVoto;
-	Long opcion;
-	Long totalVotos;
+	Long opcionEscogida;
+	Integer totalVotos;
 	Long idVotacion;
-	Long codColegioElectoral;
+	String codColegioElectoral;
 	
 	public String getTipoVoto() {
 		return tipoVoto;
@@ -14,15 +15,15 @@ public class VotoData {
 		this.tipoVoto = tipoVoto;
 	}
 	public Long getOpcion() {
-		return opcion;
+		return opcionEscogida;
 	}
 	public void setOpcion(Long opcion) {
-		this.opcion = opcion;
+		this.opcionEscogida = opcion;
 	}
-	public Long getTotalVotos() {
+	public Integer getTotalVotos() {
 		return totalVotos;
 	}
-	public void setTotalVotos(Long totalVotos) {
+	public void setTotalVotos(Integer totalVotos) {
 		this.totalVotos = totalVotos;
 	}
 	public Long getIdVotacion() {
@@ -31,19 +32,27 @@ public class VotoData {
 	public void setIdVotacion(Long idVotacion) {
 		this.idVotacion = idVotacion;
 	}
-	public Long getCodColegioElectoral() {
+	public String getCodColegioElectoral() {
 		return codColegioElectoral;
 	}
-	public void setCodColegioElectoral(Long codColegioElectoral) {
+	public void setCodColegioElectoral(String codColegioElectoral) {
 		this.codColegioElectoral = codColegioElectoral;
 	}
-	public VotoData(String tipoVoto, Long opcion, Long totalVotos, Long idVotacion, Long codColegioElectoral) {
+	public VotoData(String tipoVoto, Long opcion, Integer totalVotos, Long idVotacion, String codColegioElectoral) {
 		super();
+
 		this.tipoVoto = tipoVoto;
-		this.opcion = opcion;
+		this.opcionEscogida = opcion;
 		this.totalVotos = totalVotos;
 		this.idVotacion = idVotacion;
 		this.codColegioElectoral = codColegioElectoral;
 	}
+	@Override
+	public String toString() {
+		return "VotoData [tipoVoto=" + tipoVoto + ", opcion=" + opcionEscogida + ", totalVotos=" + totalVotos + ", idVotacion="
+				+ idVotacion + ", codColegioElectoral=" + codColegioElectoral + "]";
+	}
+	
+	
 
 }

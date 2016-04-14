@@ -22,7 +22,8 @@ public class Votos {
 			ps = c.prepareStatement("SELECT * FROM VOTOS");
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				votos.add(new VotoData(rs.getString("TIPOVOTO"), rs.getLong("OPCION"), rs.getLong("TOTALVOTOS"), rs.getLong("IDVOTACION"), rs.getLong("CODCOLEGIOELECTORAL")));
+				//String tipoVoto, Long opcion, Integer totalVotos, Long idVotacion, String codColegioElectoral
+				votos.add(new VotoData(rs.getString("tipoVoto"), rs.getLong("opcionEscogida"), rs.getInt("totalVotos"), rs.getLong("idVotacion"), rs.getString("colegioElectoral")));
 			}
 			c.close();
 

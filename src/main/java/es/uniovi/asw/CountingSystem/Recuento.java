@@ -10,10 +10,10 @@ public class Recuento {
 	static int votosElectronicos = 0;
 	static int votosManuales = 0;
 	static int censadosTotales=0;
-	static Map<Integer,Integer> colegios = null;
+	static Map<String, Integer> colegios = null;
 	static Map<String,Integer> comunidades = null;
 	
-	public static Map<Integer, Integer> getColegios() {
+	public static Map<String, Integer> getColegios() {
 		if(colegios==null)
 			colegios = Factories.persistence.census().getCensoPorColegio();
 		return colegios;

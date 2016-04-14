@@ -1,31 +1,49 @@
 package es.uniovi.asw.dbManagement.model;
 
-	
-	public class ColegioData{
-		String comunidad;
-		int codColegioElectoral;
-		
-		public String getComunidad() {
-			return comunidad;
-		}
+public class ColegioData {
+	String comunidadAutonoma;
+	String codColegioElectoral;
+	String circunscripcion;
+	String ciudad;
 
-		public void setComunidad(String comunidad) {
-			this.comunidad = comunidad;
-		}
+	public String getComunidadAutonoma() {
+		return comunidadAutonoma;
+	}
 
-		public int getCodColegioElectoral() {
-			return codColegioElectoral;
-		}
+	public void setComunidadAutonoma(String comunidadAutonoma) {
+		this.comunidadAutonoma = comunidadAutonoma;
+	}
 
-		public void setCodColegioElectoral(int codColegioElectoral) {
-			this.codColegioElectoral = codColegioElectoral;
-		}
+	public String getCircunscripcion() {
+		return circunscripcion;
+	}
 
-		public ColegioData(String comunidad, int codColegioElectoral) {
-			super();
-			this.comunidad = comunidad;
-			this.codColegioElectoral = codColegioElectoral;
-		}
-	
+	public void setCircunscripcion(String circunscripcion) {
+		this.circunscripcion = circunscripcion;
+	}
+
+	public String getCiudad() {
+		return ciudad;
+	}
+
+	public void setCiudad(String ciudad) {
+		this.ciudad = ciudad;
+	}
+
+	public String getCodColegioElectoral() {
+		return codColegioElectoral;
+	}
+
+	public void setCodColegioElectoral(String codColegioElectoral) {
+		this.codColegioElectoral = codColegioElectoral;
+	}
+
+	public ColegioData(String codColegioElectoral, String circunscripcion, String ciudad, String comunidadAutonoma) {
+		super();
+		this.comunidadAutonoma = comunidadAutonoma;
+		this.codColegioElectoral = codColegioElectoral;
+		this.circunscripcion = circunscripcion;
+		this.ciudad = ciudad;
+	}
 
 }
