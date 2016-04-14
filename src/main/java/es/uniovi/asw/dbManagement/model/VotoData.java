@@ -45,5 +45,12 @@ public class VotoData {
 		this.idVotacion = idVotacion;
 		this.codColegioElectoral = codColegioElectoral;
 	}
+	@Override
+	public String toString() {
+		return "VotoData [tipoVoto=" + tipoVoto + ", opcion=" + opcion + ", totalVotos=" + totalVotos + ", idVotacion="
+				+ idVotacion + ", codColegioElectoral=" + codColegioElectoral + "]";
+	}
+	
+	
 
 }
