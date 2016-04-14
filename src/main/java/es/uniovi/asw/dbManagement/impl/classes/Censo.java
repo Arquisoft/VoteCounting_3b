@@ -15,24 +15,24 @@ import es.uniovi.asw.dbManagement.Jdbc;
  * 
  */
 public class Censo {
-	
-	Connection c=null;
+
+	Connection c = null;
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 
-	public Map<Integer, Integer> getCensoPorColegio() {
-		Map<Integer, Integer> m = new HashMap<Integer, Integer>();
+	public Map<String, Integer> getCensoPorColegio() {
+		Map<String, Integer> m = new HashMap<String, Integer>();
 
 		try {
 			c = Jdbc.getConnection();
 			ps = c.prepareStatement("SELECT CODCOLEGIOELECTORAL FROM CENSOS");
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				if (m.containsKey(rs.getInt("CODCOLEGIOELECTORAL")))
-					m.replace(rs.getInt("CODCOLEGIOELECTORAL"), m.get(rs.getInt("CODCOLEGIOELECTORAL")),
-							m.get(rs.getInt("CODCOLEGIOELECTORAL") + 1));
+				String key = rs.getString(1);
+				if (m.containsKey(key))
+					m.replace(key, m.get(key), m.get(key) + 1);
 				else
-					m.put(rs.getInt("CODCOLEGIOELECTORAL"), 1);
+					m.put(rs.getString("CODCOLEGIOELECTORAL"), 1);
 			}
 			c.close();
 
@@ -62,15 +62,15 @@ public class Censo {
 
 	public Map<String, Integer> getCensoPorComunidad() {
 		Connection c = null;
-		Map<String,Integer> comunidades = new HashMap<String,Integer>();
+		Map<String, Integer> comunidades = new HashMap<String, Integer>();
 		try {
 			c = Jdbc.getConnection();
 			PreparedStatement ps = c.prepareStatement("SELECT * FROM CENSOS");
 			ResultSet rs = ps.executeQuery();
-			while(rs.next()){
+			while (rs.next()) {
 				String key = rs.getString(rs.getString("COMUNIDAD"));
-				if(comunidades.containsKey(key))
-					comunidades.replace(key, comunidades.get(key), comunidades.get(key)+1);
+				if (comunidades.containsKey(key))
+					comunidades.replace(key, comunidades.get(key), comunidades.get(key) + 1);
 				else
 					comunidades.put(key, 1);
 			}

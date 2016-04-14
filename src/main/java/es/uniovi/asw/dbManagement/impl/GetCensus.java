@@ -14,7 +14,7 @@ public class GetCensus implements IGetCensus{
 
 
 	@Override
-	public Map<Integer, Integer> getCensoPorColegio() {
+	public Map<String, Integer> getCensoPorColegio() {
 		return new Censo().getCensoPorColegio();
 	}
 

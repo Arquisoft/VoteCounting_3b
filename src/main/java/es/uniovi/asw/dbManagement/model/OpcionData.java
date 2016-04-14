@@ -5,10 +5,20 @@ import java.util.List;
 public class OpcionData {
 	
 	List<String> opciones;
+	Long idVotacion;
 
-	public OpcionData(List<String> opciones) {
+	public Long getIdVotacion() {
+		return idVotacion;
+	}
+
+	public void setIdVotacion(Long idVotacion) {
+		this.idVotacion = idVotacion;
+	}
+
+	public OpcionData(List<String> opciones,Long idVotacion) {
 		super();
 		this.opciones = opciones;
+		this.idVotacion = idVotacion;
 	}
 
 	public List<String> getOpciones() {

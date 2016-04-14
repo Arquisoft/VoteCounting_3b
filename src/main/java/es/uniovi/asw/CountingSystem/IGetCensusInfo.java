@@ -8,7 +8,7 @@ package es.uniovi.asw.CountingSystem;
  */
 public interface IGetCensusInfo {
 	
-	public int getVotantesPorColegio(int colegio);
+	public int getVotantesPorColegio(String colegio);
 	
 	public int getVotantesTotales();
 	

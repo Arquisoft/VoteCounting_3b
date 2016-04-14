@@ -3,6 +3,7 @@ package es.uniovi.asw.dbManagement;
 import java.util.List;
 
 import es.uniovi.asw.dbManagement.model.OpcionData;
+import es.uniovi.asw.dbManagement.model.VotanteData;
 import es.uniovi.asw.dbManagement.model.VotoData;
 
 public interface IGetVotes {
@@ -28,5 +29,7 @@ public interface IGetVotes {
 	public OpcionData getOpciones();
 	
 	public List<VotoData> getVotos();
+
+	public List<VotanteData> getVotantesPorColegio(String codColegioElectoral);
 
 }

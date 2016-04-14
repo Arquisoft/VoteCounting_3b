@@ -27,9 +27,11 @@ public class Main {
   @RequestMapping(value="/")
   public ModelAndView landing(Model model) {
     LOG.info("Landing page access");
+    
     mostrarColegios();
     mostrarCensoPorColegios();
     mostrarVotosTotales();
+    
     return new ModelAndView("index");
   }
   
@@ -50,10 +52,11 @@ private void mostrarVotosTotales() {
 
 private void mostrarCensoPorColegios() {
 	System.out.println("Censo por colegios");
-	Map<Integer, Integer> censo = Factories.persistence.census().getCensoPorColegio();
-	Set<Integer> aux = censo.keySet();	
-	for(Integer a:aux)
+	Map<String, Integer> censo = Factories.persistence.census().getCensoPorColegio();
+	Set<String> aux = censo.keySet();	
+	for(String a:aux)
 		System.out.println("Codigo colegio: " +a +", Censo: "+ censo.get(a));
+	System.out.println(censo.values().toString());
 	
 }
 
@@ -61,7 +64,7 @@ private void mostrarColegios() {
 	System.out.println("Colegios");
 	List<ColegioData> colegios = Factories.persistence.census().getColegios();
 	for(ColegioData s:colegios){
-		System.out.println(s.getComunidad() + " -> Código colegio: " + s.getCodColegioElectoral());
+		System.out.println(s.getComunidadAutonoma() + " -> Código colegio: " + s.getCodColegioElectoral());
 	}
 	if(colegios.isEmpty())
 		System.out.println("NO hay coles...");

@@ -10,17 +10,17 @@ import es.uniovi.asw.Factories;
 import es.uniovi.asw.dbManagement.model.ColegioData;
 import es.uniovi.asw.dbManagement.model.PersonaData;
 
-public class Votantes {
+public class PersonasCenso {
 
 	Connection c = null;
 	PreparedStatement ps;
 	ResultSet rs;
 
-	public int findByColegio(int colegio) {
+	public int findByColegio(String colegio) {
 		List<PersonaData> personas = Factories.persistence.census().getPersonas();
 		int votantes=0;
 		for(PersonaData p:personas)
-			if(p.getCodColegioElectoral()==colegio)
+			if(p.getCodColegioElectoral().equals(colegio))
 				votantes++;
 		return votantes;
 	}
@@ -32,10 +32,10 @@ public class Votantes {
 	public int findByComunidad(String comunidad) {
 		List<PersonaData> personas = Factories.persistence.census().getPersonas();
 		List<ColegioData> colegios = Factories.persistence.census().getColegios();
-		List<Integer> codigos = new ArrayList<Integer>();
+		List<String> codigos = new ArrayList<String>();
 		int contador=0;
 		for(ColegioData c:colegios)
-			if(c.getComunidad().equals(comunidad))
+			if(c.getComunidadAutonoma().equals(comunidad))
 				 codigos.add(c.getCodColegioElectoral());
 		for(PersonaData p:personas)
 			if(codigos.contains(p.getCodColegioElectoral()))

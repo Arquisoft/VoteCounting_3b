@@ -12,7 +12,7 @@ public interface IGetCensus {
 	 * Recuento de electores por colegio
 	 * @return mapa con colegios y número de electores
 	 */
-	public Map<Integer,Integer> getCensoPorColegio();
+	public Map<String,Integer> getCensoPorColegio();
 
 	public Integer getTotalCenso();
 

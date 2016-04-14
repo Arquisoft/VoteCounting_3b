@@ -15,14 +15,15 @@ public class Opciones {
 	ResultSet rs=null;
 	public OpcionData getOpciones() {
 		
-		OpcionData opciones = new OpcionData(new ArrayList<String>());
+		OpcionData opciones = new OpcionData(new ArrayList<String>(),null);
 
 		try {
 			c = Jdbc.getConnection();
 			 ps = c.prepareStatement("SELECT * FROM OPCION");
 			 rs = ps.executeQuery();
 			while (rs.next()) {
-				opciones.getOpciones().add(rs.getString("NOMBRE"));
+				opciones.getOpciones().add(rs.getString("nombre"));
+				opciones.setIdVotacion(rs.getLong("idVotacion"));
 			}
 			c.close();
 

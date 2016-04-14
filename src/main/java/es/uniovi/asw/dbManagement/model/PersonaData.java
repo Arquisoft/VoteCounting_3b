@@ -1,13 +1,22 @@
 package es.uniovi.asw.dbManagement.model;
 
 public class PersonaData {
+		int id;
+		public int getId() {
+			return id;
+		}
+
+		public void setId(int id) {
+			this.id = id;
+		}
+
 		String nombre;
 		String NIF;
 		String email;
-		int codColegioElectoral;
+		String codColegioElectoral;
 		String password;
 
-		public PersonaData(String nombre, String nIF, String email, int codColegioElectoral, String password) {
+		public PersonaData(String nombre, String nIF, String email, String codColegioElectoral, String password) {
 			super();
 			this.nombre = nombre;
 			NIF = nIF;
@@ -40,11 +49,11 @@ public class PersonaData {
 			this.email = email;
 		}
 
-		public int getCodColegioElectoral() {
+		public String getCodColegioElectoral() {
 			return codColegioElectoral;
 		}
 
-		public void setCodColegioElectoral(int codColegioElectoral) {
+		public void setCodColegioElectoral(String codColegioElectoral) {
 			this.codColegioElectoral = codColegioElectoral;
 		}
 
