@@ -1,6 +1,10 @@
 package es.uniovi.asw.CountingSystem.impl;
 
+import java.util.List;
+
 import es.uniovi.asw.CountingSystem.IGetVotesInfo;
+import es.uniovi.asw.CountingSystem.impl.classes.VotesInfo;
+import es.uniovi.asw.dbManagement.model.VotoData;
 
 public class GetVotesInfo implements IGetVotesInfo {
 
@@ -17,9 +21,8 @@ public class GetVotesInfo implements IGetVotesInfo {
 	}
 
 	@Override
-	public int getVotosTotales() {
-		// TODO Auto-generated method stub
-		return 0;
+	public List<VotoData> getVotosTotales() {
+		return new VotesInfo().getVotosTotales();
 	}
 
 	@Override
@@ -33,7 +36,10 @@ public class GetVotesInfo implements IGetVotesInfo {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-	
-	
 
+	@Override
+	public  Integer getParticipacion(String lugar) {
+		return new VotesInfo().getParticipacion(lugar);
+	}
+	
 }

@@ -1,5 +1,8 @@
 package es.uniovi.asw.CountingSystem;
 
+import java.util.List;
+
+import es.uniovi.asw.dbManagement.model.VotoData;
 
 /***
  * Interfaz para estadísticas. Añadir métodos en función de las estadísticas
@@ -13,10 +16,12 @@ public interface IGetVotesInfo {
 	
 	public int getVotosPorOpcion(String opcion);
 	
-	public int getVotosTotales();
+	public List<VotoData> getVotosTotales();
 	
 	public int getVotosPorTipo(String tipo);
 	
 	public int getVotosPorOpcionYTipo(String opcion, String tipo);
+
+	public Integer getParticipacion(String lugar);
 
 }

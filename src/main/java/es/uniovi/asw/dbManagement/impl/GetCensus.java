@@ -24,8 +24,8 @@ public class GetCensus implements IGetCensus{
 	}
 
 	@Override
-	public Map<String, Integer> getCensoPorComunidad() {
-		return new Censo().getCensoPorComunidad();
+	public Map<String, Integer> getCensoPorComunidad(String comunidad) {
+		return new Censo().getCensoPorComunidad(comunidad);
 	}
 
 	@Override
@@ -37,6 +37,11 @@ public class GetCensus implements IGetCensus{
 	public List<PersonaData> getPersonas() {
 		// TODO Auto-generated method stub
 		return new Personas().getPersonas();
+	}
+
+	@Override
+	public Integer getCensoPorLugar(String lugar) {
+		return new Censo().getCensoPorLugar(lugar);
 	}
 	
 	

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import es.uniovi.asw.Factories;
-
+import es.uniovi.asw.CountingSystem.Recuento;
 import es.uniovi.asw.CountingSystem.charts.ChartView;
 import es.uniovi.asw.dbManagement.model.ColegioData;
 import es.uniovi.asw.dbManagement.model.VotoData;
@@ -32,12 +32,29 @@ public class Main {
     
     mostrarColegios();
     mostrarCensoPorColegios();
-    mostrarVotosTotales();
+    //mostrarVotosTotales();
+    //mostrarParticipacion(null);
+    mostrarVotosPorComunidad("Oviedo");
     
     return new ModelAndView("index");
   }
   
-  @RequestMapping(value="/mostrarEstadisticas")
+  private void mostrarVotosPorComunidad(String lugar) {
+	Map<String, Integer> v = Recuento.getVotosPorCiudad(lugar);
+	Set<String> aux = v.keySet();	
+	System.out.println("Votos en " + lugar);
+	for(String a:aux)
+		System.out.println("Opcion " + a +", votos: "+ v.get(a));
+	
+	
+}
+
+private void mostrarParticipacion(String lugar) {
+	Object participacion = Recuento.getParticipacion(lugar);
+	
+}
+
+@RequestMapping(value="/mostrarEstadisticas")
   public ChartView DevolverGrafico(){
 	  return null;
   }
@@ -46,7 +63,7 @@ public class Main {
   
 private void mostrarVotosTotales() {
 	System.out.println("Votos totales");
-	List<VotoData> total = Factories.persistence.votes().getVotos();
+	List<VotoData> total = Recuento.getVotosTotales();
 	for(VotoData v: total)
 		System.out.println(v.toString());
 	
@@ -54,7 +71,7 @@ private void mostrarVotosTotales() {
 
 private void mostrarCensoPorColegios() {
 	System.out.println("Censo por colegios");
-	Map<String, Integer> censo = Factories.persistence.census().getCensoPorColegio();
+	Map<String, Integer> censo = Recuento.getCensoAndColegio();
 	Set<String> aux = censo.keySet();	
 	for(String a:aux)
 		System.out.println("Codigo colegio: " +a +", Censo: "+ censo.get(a));
@@ -65,7 +82,7 @@ private void mostrarCensoPorColegios() {
 private void mostrarColegios() {
 
 	System.out.println("Colegios");
-	List<ColegioData> colegios = Factories.persistence.census().getColegios();
+	List<ColegioData> colegios = Recuento.getColegios();
 	for(ColegioData s:colegios){
 		System.out.println(s.getComunidadAutonoma() + " -> Código colegio: " + s.getCodColegioElectoral());
 

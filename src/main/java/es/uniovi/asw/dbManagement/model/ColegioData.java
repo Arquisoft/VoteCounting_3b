@@ -46,4 +46,10 @@ public class ColegioData {
 		this.ciudad = ciudad;
 	}
 
+	@Override
+	public String toString() {
+		return "ColegioData [comunidadAutonoma=" + comunidadAutonoma + ", codColegioElectoral=" + codColegioElectoral
+				+ ", circunscripcion=" + circunscripcion + ", ciudad=" + ciudad + "]";
+	}
+
 }

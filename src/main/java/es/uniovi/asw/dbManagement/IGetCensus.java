@@ -18,12 +18,16 @@ public interface IGetCensus {
 
 	/***
 	 * Calcula el censo por comunidad
+	 * @param comunidad 
 	 * @return Mapa con las comunidades y el número de votantes
 	 */
-	public Map<String, Integer> getCensoPorComunidad();
+	public Map<String, Integer> getCensoPorComunidad(String comunidad);
 	
 	public List<PersonaData> getPersonas();
 	
 	public List<ColegioData> getColegios();
+
+	public Integer getCensoPorLugar(String lugar);
+
 
 }

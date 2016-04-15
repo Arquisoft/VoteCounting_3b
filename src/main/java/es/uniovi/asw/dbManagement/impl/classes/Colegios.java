@@ -23,12 +23,11 @@ public class Colegios {
 			ps = c.prepareStatement("SELECT * FROM COLEGIOELECTORAL");
 			rs = ps.executeQuery();
 			while (rs.next()) {
-<<<<<<< HEAD
-				colegios.add(new ColegioData(rs.getString("COMUNIDAD"), rs.getInt("CODIGOCOLEGIOELECTORAL")));
-=======
-				//public ColegioData(String codColegioElectoral, String circunscripcion, String ciudad, String comunidadAutonoma) {
-				colegios.add(new ColegioData(rs.getString("codColegioElectoral"), rs.getString("circunscripcion"),rs.getString("ciudad"),rs.getString("comunidadAutonoma")));
->>>>>>> damian
+
+				// public ColegioData(String codColegioElectoral, String
+				// circunscripcion, String ciudad, String comunidadAutonoma) {
+				colegios.add(new ColegioData(rs.getString("codColegioElectoral"), rs.getString("circunscripcion"),
+						rs.getString("ciudad"), rs.getString("comunidadAutonoma")));
 			}
 			c.close();
 

@@ -58,5 +58,11 @@ public class Colegio {
 		this.tipo = tipo;
 	}
 
+	@Override
+	public String toString() {
+		return "Colegio [codigo=" + codigo + ", votos=" + votos + ", comunidad=" + comunidad + ", opcion=" + opcion
+				+ ", tipo=" + tipo + "]";
+	}
+
 
 }

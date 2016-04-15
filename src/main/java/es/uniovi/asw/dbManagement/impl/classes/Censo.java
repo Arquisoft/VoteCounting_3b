@@ -44,13 +44,11 @@ public class Censo {
 	}
 
 	public Integer total() {
-		Connection c = null;
 		Integer total = 0;
-
 		try {
 			c = Jdbc.getConnection();
-			PreparedStatement ps = c.prepareStatement("SELECT COUNT(*) FROM CENSOS");
-			ResultSet rs = ps.executeQuery();
+			ps = c.prepareStatement("SELECT COUNT(*) FROM CENSOS");
+			rs = ps.executeQuery();
 			total = rs.getInt(1);
 			c.close();
 		} catch (Throwable e) {
@@ -60,13 +58,13 @@ public class Censo {
 		return total;
 	}
 
-	public Map<String, Integer> getCensoPorComunidad() {
-		Connection c = null;
+	public Map<String, Integer> getCensoPorComunidad(String comunidad) {
 		Map<String, Integer> comunidades = new HashMap<String, Integer>();
 		try {
 			c = Jdbc.getConnection();
-			PreparedStatement ps = c.prepareStatement("SELECT * FROM CENSOS");
-			ResultSet rs = ps.executeQuery();
+			ps = c.prepareStatement("SELECT * FROM CENSOS WHERE COMUNIDAD=?");
+			ps.setString(1, comunidad);
+			rs = ps.executeQuery();
 			while (rs.next()) {
 				String key = rs.getString(rs.getString("COMUNIDAD"));
 				if (comunidades.containsKey(key))
@@ -80,6 +78,11 @@ public class Censo {
 			e.printStackTrace();
 		}
 		return comunidades;
+	}
+
+	public Integer getCensoPorLugar(String lugar) {
+		Integer censo = null;
+		return censo;
 	}
 
 }
