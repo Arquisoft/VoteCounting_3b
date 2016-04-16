@@ -1,31 +1,15 @@
 <!DOCTYPE html> 
 <html xmlns:th="http://www.thymeleaf.org"> 
     <head>
-         <!--  Load  the AJAX API  -->  
-        <script type=  "text/javascript"  src="https://www.gstatic.com/charts/loader.js"></script>   
-        <script type=  "text/javascript">      
-
- // Load the Visualization API and the controls package.     
- // Packages for all the other charts you need will be loaded     
- // automatically by the system.   
-
-    google.charts.load('current',{'packages':['controls'  ]});
-
-     // Set a callback to run when the Google Visualization API is loaded.
-
-    google.charts.setOnLoadCallback  (  drawDashboard  );      
-     function  drawDashboard  ()   
-     {     
-         // Everything is loaded. Assemble your dashboard...     
-     }   
-        </script> 
     </head>
 <body>
- <h1>Bienvenido al sistema de recuento oficial</h1> 
- <div id="dashboard_div"> <!--Divs that will hold each control and chart--> 
- <div id="filter_div"></div> 
- <div id="chart_div"></div> 
+ <h1 th:>Bienvenido al sistema de recuento oficial</h1> 
+ <div id="dashboard_div">
+    <form th:action="@{statistics}" method="post">
+        <button type="submit">Ver estadísticas</button>
+    </form>
  </div>  
+    
  </body> 
 
 </html>

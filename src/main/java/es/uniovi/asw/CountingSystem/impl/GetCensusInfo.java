@@ -1,5 +1,6 @@
 package es.uniovi.asw.CountingSystem.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -44,6 +45,28 @@ public class GetCensusInfo implements IGetCensusInfo {
 	public Integer getVotantesPorCiudad(String ciudad) {
 		// TODO Auto-generated method stub
 		return new PersonasCenso().findByCiudad(ciudad);
+	}
+
+	@Override
+	public List<String> getCiudades() {
+		List<ColegioData> colegios = new ColegiosInfo().findAll();
+		List<String> ciudades = new ArrayList<String>();
+		colegios.forEach(colegio->{
+			if(!ciudades.contains(colegio.getCiudad()))
+				ciudades.add(colegio.getCiudad());
+		});
+		return ciudades;
+	}
+
+	@Override
+	public List<String> getComunidades() {
+		List<ColegioData> colegios = new ColegiosInfo().findAll();
+		List<String> comunidades = new ArrayList<String>();
+		colegios.forEach(c->{
+			if(!comunidades.contains(c.getComunidadAutonoma()))
+				comunidades.add(c.getComunidadAutonoma());
+		});
+		return comunidades;
 	}
 	
 

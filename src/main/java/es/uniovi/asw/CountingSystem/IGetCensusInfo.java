@@ -25,4 +25,8 @@ public interface IGetCensusInfo {
 
 	public Integer getVotantesPorCiudad(String ciudad);
 
+	public List<String> getCiudades();
+
+	public List<String> getComunidades();
+
 }

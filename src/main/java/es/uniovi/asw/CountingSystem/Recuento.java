@@ -15,17 +15,56 @@ public class Recuento {
 	static int votosManuales = 0;
 	static int censadosTotales = 0;
 	static List<ColegioData> colegios = null;
-	static Map<String, Integer> comunidades = new HashMap<String, Integer>();
+	static Map<String, Map<String, Integer>> mapaVotosTotales = new HashMap<String,Map<String,Integer>>();
+	static Map<String, Integer> censadosComunidades = new HashMap<String, Integer>();
 	static Map<String, Integer> censoPorColegio = null;
 	static Map<String, Integer> participacion = new HashMap<String, Integer>();
-	static Map<String, Integer> ciudades = new HashMap<String, Integer>();
+	static Map<String, Integer> censadosCiudades = new HashMap<String, Integer>();
 	static Map<String, Map<String, Integer>> votosPorCiudad = new HashMap<String, Map<String, Integer>>();
 	static Map<String, Map<String, Integer>> votosPorComunidad = new HashMap<String, Map<String, Integer>>();
+	private static List<String> ciudades = null;
+	private static List<String> comunidades = null;
 
 	public static List<ColegioData> getColegios() {
 		if (colegios == null)
 			colegios = Factories.services.CensusInfo().getColegios();
 		return colegios;
+	}
+
+	public static Map<String, Map<String, Integer>> getMapaVotosTotales() {
+		Map<String, Integer> cantidad = new HashMap<String, Integer>();
+		if (mapaVotosTotales.isEmpty()) {
+			List<VotoData> votos = getVotosTotales();
+			for (VotoData voto : votos) {
+				Integer votosSi;
+				Integer votosNo;
+				Integer votosBlanco;
+				if (voto.getOpcion().compareTo(0L) == 0) {
+					votosSi = voto.getTotalVotos();
+					if (cantidad.containsKey("SI"))
+						cantidad.replace("SI", cantidad.get("SI"), cantidad.get("SI") + votosSi);
+					else
+						cantidad.put("SI", votosSi);
+				} else if (voto.getOpcion().compareTo(1L) == 0) {
+					votosNo = voto.getTotalVotos();
+					if (cantidad.containsKey("NO"))
+						cantidad.replace("NO", cantidad.get("NO"), cantidad.get("NO") + votosNo);
+					else
+						cantidad.put("NO", votosNo);
+				} else {
+					votosBlanco = voto.getTotalVotos();
+					if (cantidad.containsKey("BLANCO"))
+						cantidad.replace("BLANCO", cantidad.get("BLANCO"), cantidad.get("BLANCO") + votosBlanco);
+					else
+						cantidad.put("BLANCO", votosBlanco);
+				}
+
+			}
+			mapaVotosTotales.put("España", cantidad);
+			System.out.println(cantidad);
+		}
+		return mapaVotosTotales;
+
 	}
 
 	public static List<VotoData> getVotosTotales() {
@@ -45,21 +84,21 @@ public class Recuento {
 	}
 
 	public static Integer getCensadosComunidad(String comunidad) {
-		if (!comunidades.containsKey(comunidad)) {
+		if (!censadosComunidades.containsKey(comunidad)) {
 			int vot = Factories.services.CensusInfo().getVotantesPorComunidad(comunidad);
-			comunidades.put(comunidad, vot);
+			censadosComunidades.put(comunidad, vot);
 		}
-		return comunidades.get(comunidad);
+		return censadosComunidades.get(comunidad);
 
 	}
 
 	public static Integer getCensadosCiudad(String ciudad) {
 		Integer vot;
-		if (!ciudades.containsKey(ciudad)) {
+		if (!censadosCiudades.containsKey(ciudad)) {
 			vot = Factories.services.CensusInfo().getVotantesPorCiudad(ciudad);
-			ciudades.put(ciudad, vot);
+			censadosCiudades.put(ciudad, vot);
 		}
-		return ciudades.get(ciudad);
+		return censadosCiudades.get(ciudad);
 	}
 
 	public static Map<String, Integer> getCensoAndColegio() {
@@ -71,9 +110,9 @@ public class Recuento {
 	public static Object getParticipacion(String lugar) {
 		if (participacion.get(lugar) == null) {
 			participacion.put(lugar, Factories.services.VotesInfo().getParticipacion(lugar));
-			Integer votantesPotenciales = comunidades.get(lugar);
+			Integer votantesPotenciales = censadosComunidades.get(lugar);
 			if (votantesPotenciales == null) {
-				votantesPotenciales = ciudades.get(lugar);
+				votantesPotenciales = censadosCiudades.get(lugar);
 			}
 		}
 		return participacion.get(lugar);
@@ -88,11 +127,11 @@ public class Recuento {
 			colegios.removeIf(colegio -> !colegio.getCiudad().equals(lugar));
 			System.out.println(votos);
 			List<VotoData> aux = new ArrayList<VotoData>();
-			for(ColegioData colegio:colegios)
-				votos.forEach(v->{
-					if(v.getCodColegioElectoral().equals(colegio.getCodColegioElectoral()))
+			for (ColegioData colegio : colegios)
+				votos.forEach(v -> {
+					if (v.getCodColegioElectoral().equals(colegio.getCodColegioElectoral()))
 						aux.add(v);
-					});
+				});
 			for (VotoData voto : aux) {
 				System.out.println(voto);
 				Integer votosSi;
@@ -175,6 +214,18 @@ public class Recuento {
 
 		return votosPorComunidad.get(lugar);
 
+	}
+
+	public static List<String> getCiudades() {
+		if (ciudades == null)
+			ciudades = Factories.services.CensusInfo().getCiudades();
+		return ciudades;
+	}
+
+	public static List<String> getComunidades() {
+		if (comunidades == null)
+			comunidades = Factories.services.CensusInfo().getComunidades();
+		return comunidades;
 	}
 
 }

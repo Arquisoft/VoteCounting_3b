@@ -8,11 +8,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import es.uniovi.asw.Factories;
 import es.uniovi.asw.dbManagement.model.ColegioData;
 import es.uniovi.asw.dbManagement.model.OpcionData;
 import es.uniovi.asw.dbManagement.model.PersonaData;
-import es.uniovi.asw.dbManagement.model.VotanteData;
 import es.uniovi.asw.dbManagement.model.VotoData;
 
 public class Jdbc {
