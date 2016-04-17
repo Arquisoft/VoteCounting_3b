@@ -46,7 +46,7 @@ public class Main {
 	}
 
 	@RequestMapping(value = "/statisticsCiudad", method = RequestMethod.POST)
-	public ModelAndView estadisticasCiudad(@RequestParam(name = "ciudad",required=true) String lugar,HttpSession sesion) {
+	public ModelAndView estadisticasCiudad(@RequestParam(name = "ciudad",required=true) String lugar) {
 		System.out.println("Ciudad: " + lugar);
 		ModelAndView mv = new ModelAndView("statistics");
 		Map<String, Integer> votos = Recuento.getVotosPorCiudad(lugar);

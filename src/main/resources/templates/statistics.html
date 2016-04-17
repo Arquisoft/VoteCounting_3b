@@ -13,13 +13,15 @@
         </table>
     </div>
     <div id="div_ciudades">
-        <form action="statisticsCiudad" th:method="post">
-            <select th:field="*{ciudades}">
-                <option th:each="ciudad : ${ciudades}" 
-                    th:value="${ciudad}"
-                    th:text="${ciudad}"></option>
-            </select>
-            <input type="button" th:type="submit" th:name="ciudad" th:value="${ciudad}"/>          
+        <form id="fciudades" th:method="post">
+            <select th:field="*{ciudades}" th:remove="all-but-first">
+                <option th:each="c : ${ciudades}" th:selected="true"
+                    th:value="${c}"
+                    th:text="${c}"
+                        name="opcion">                    
+                </option>
+            </select>           
+            <button th:type="submit" formmethod="post" formaction="statisticsCiudad" th:name="ciudad" th:value="${ciudades}">Ver votos</button>         
         </form>
     </div>
     <div id="div_comunidades">
