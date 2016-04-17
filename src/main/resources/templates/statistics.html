@@ -13,13 +13,13 @@
         </table>
     </div>
     <div id="div_ciudades">
-        <form th:action="@{statisticsCiudad(ciudad=${ciudad})}">
+        <form action="statisticsCiudad" th:method="post">
             <select th:field="*{ciudades}">
                 <option th:each="ciudad : ${ciudades}" 
                     th:value="${ciudad}"
                     th:text="${ciudad}"></option>
             </select>
-            <button th:type="submit" formaction="@{statisticsCiudad(ciudad=${ciudad})}">Ver votos</button>
+            <input type="button" th:type="submit" th:name="ciudad" th:value="${ciudad}"/>          
         </form>
     </div>
     <div id="div_comunidades">
@@ -29,7 +29,7 @@
                     th:value="${comunidad}" 
                     th:text="${comunidad}"></option>
             </select>
-            <button type="submit">Ver votos</button>
+            <button th:type="submit" formmethod="post">Ver votos</button>
         </form>
     </div>
 </body> 
