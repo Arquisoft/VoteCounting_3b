@@ -15,7 +15,7 @@
     <div id="div_ciudades">
         <form id="fciudades" th:method="post">
             <select th:field="*{ciudades}" th:remove="all-but-first">
-                <option th:each="c : ${ciudades}" th:selected="true"
+                <option th:each="c : ${ciudades}"
                     th:value="${c}"
                     th:text="${c}"
                         name="opcion">                    

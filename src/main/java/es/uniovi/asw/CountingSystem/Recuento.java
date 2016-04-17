@@ -160,8 +160,6 @@ public class Recuento {
 
 			}
 			votosPorCiudad.put(lugar, cantidad);
-			System.out.println(cantidad);
-
 		}
 
 		return votosPorCiudad.get(lugar);
