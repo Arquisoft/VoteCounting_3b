@@ -1,12 +1,10 @@
 package es.uniovi.asw.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import javax.servlet.http.HttpSession;
-
-import org.apache.http.HttpRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -27,7 +25,9 @@ import es.uniovi.asw.dbManagement.model.VotoData;
 public class Main {
 
 	private static final Logger LOG = LoggerFactory.getLogger(Main.class);
-
+	private static final List<SearchOptions> ciudades = new ArrayList<SearchOptions>();
+	private static final List<SearchOptions> comunidades = new ArrayList<SearchOptions>();
+	
 	@RequestMapping(value = "/", method = {RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView landing(Model model) {
 		ModelAndView mv = new ModelAndView("index");
@@ -40,32 +40,32 @@ public class Main {
 		ModelAndView mv = new ModelAndView("statistics");
 		Map<String, Integer> votos = Recuento.getMapaVotosTotales().get("España");
 		mv.addObject("votos", votos);
-		mv.addObject("ciudades", Recuento.getCiudades());
-		mv.addObject("comunidades", Recuento.getComunidades());
+		for(String s:Recuento.getCiudades())
+			ciudades.add(new SearchOptions(s,s));
+		for(String s:Recuento.getComunidades())
+			comunidades.add(new SearchOptions(s,s));
+		mv.addObject("ciudades", ciudades);
+		mv.addObject("comunidades", comunidades);
 		return mv;
 	}
 
 	@RequestMapping(value = "/statisticsCiudad", method = RequestMethod.POST)
-	public ModelAndView estadisticasCiudad(@RequestParam(name = "ciudad",required=true) String lugar) {
+	public ModelAndView estadisticasCiudad(@RequestParam(name = "optionsListId",required=true) String lugar) {
 		System.out.println("Ciudad: " + lugar);
 		ModelAndView mv = new ModelAndView("statistics");
 		Map<String, Integer> votos = Recuento.getVotosPorCiudad(lugar);
 		mv.addObject("votos", votos);
-		mv.addObject("ciudades", Recuento.getCiudades());
-		mv.addObject("comunidades", Recuento.getComunidades());
+
 		return mv;
 	}
 
 	@RequestMapping(value = "/statisticsComunidad", method = RequestMethod.POST)
-	public ModelAndView estadisticasComunidad(@RequestParam(value = "comunidad") String lugar) {
+	public ModelAndView estadisticasComunidad(@RequestParam(value = "optionsListId",required=true) String lugar) {
 
 		System.out.println("Comunidad: " + lugar);
 		ModelAndView mv = new ModelAndView("statistics");
 		Map<String, Integer> votos = Recuento.getVotosPorComunidad(lugar);
-		;
 		mv.addObject("votos", votos);
-		mv.addObject("ciudades", Recuento.getCiudades());
-		mv.addObject("comunidades", Recuento.getComunidades());
 		return mv;
 	}
 
