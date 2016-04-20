@@ -139,82 +139,82 @@ public class Jdbc {
 
 
 		
-		votos.add(new VotoData("ELECTRONICO", 0L, 52, 1L, "AST001"));// 345,456
-		votos.add(new VotoData("ELECTRONICO", 1L, 10, 1L, "AST001"));// 345,456
-		votos.add(new VotoData("ELECTRONICO", 2L, 20, 1L, "AST001"));// 345,456
-		votos.add(new VotoData("ELECTRONICO", 0L, 32, 1L, "AST002"));// 345,456
-		votos.add(new VotoData("ELECTRONICO", 1L, 21, 1L, "AST002"));// 345,456
-		votos.add(new VotoData("ELECTRONICO", 2L, 26, 1L, "AST002"));// 345,456
-		votos.add(new VotoData("ELECTRONICO", 0L, 15, 1L, "AST003"));// 345,456
+		votos.add(new VotoData("ELECTRONICO", 0L, 65, 1L, "AST001"));// 345,456
+		votos.add(new VotoData("ELECTRONICO", 1L, 12, 1L, "AST001"));// 345,456
+		votos.add(new VotoData("ELECTRONICO", 2L, 25, 1L, "AST001"));// 345,456
+		votos.add(new VotoData("ELECTRONICO", 0L, 39, 1L, "AST002"));// 345,456
+		votos.add(new VotoData("ELECTRONICO", 1L, 23, 1L, "AST002"));// 345,456
+		votos.add(new VotoData("ELECTRONICO", 2L, 28, 1L, "AST002"));// 345,456
+		votos.add(new VotoData("ELECTRONICO", 0L, 10, 1L, "AST003"));// 345,456
 		votos.add(new VotoData("ELECTRONICO", 1L, 19, 1L, "AST003"));// 345,456
-		votos.add(new VotoData("ELECTRONICO", 2L, 25, 1L, "AST003"));// 345,456
-		votos.add(new VotoData("ELECTRONICO", 0L, 52, 1L, "AST004"));// 345,456
-		votos.add(new VotoData("ELECTRONICO", 1L, 10, 1L, "AST004"));// 345,456
-		votos.add(new VotoData("ELECTRONICO", 2L, 20, 1L, "AST004"));// 345,456
-		votos.add(new VotoData("ELECTRONICO", 0L, 32, 1L, "AST005"));// 345,456
-		votos.add(new VotoData("ELECTRONICO", 1L, 21, 1L, "AST005"));// 345,456
-		votos.add(new VotoData("ELECTRONICO", 2L, 26, 1L, "AST005"));// 345,456
-		votos.add(new VotoData("ELECTRONICO", 0L, 32, 1L, "AST006"));// 345,456
-		votos.add(new VotoData("ELECTRONICO", 1L, 21, 1L, "AST006"));// 345,456
+		votos.add(new VotoData("ELECTRONICO", 2L, 22, 1L, "AST003"));// 345,456
+		votos.add(new VotoData("ELECTRONICO", 0L, 46, 1L, "AST004"));// 345,456
+		votos.add(new VotoData("ELECTRONICO", 1L, 15, 1L, "AST004"));// 345,456
+		votos.add(new VotoData("ELECTRONICO", 2L, 26, 1L, "AST004"));// 345,456
+		votos.add(new VotoData("ELECTRONICO", 0L, 36, 1L, "AST005"));// 345,456
+		votos.add(new VotoData("ELECTRONICO", 1L, 32, 1L, "AST005"));// 345,456
+		votos.add(new VotoData("ELECTRONICO", 2L, 15, 1L, "AST005"));// 345,456
+		votos.add(new VotoData("ELECTRONICO", 0L, 68, 1L, "AST006"));// 345,456
+		votos.add(new VotoData("ELECTRONICO", 1L, 82, 1L, "AST006"));// 345,456
 		votos.add(new VotoData("ELECTRONICO", 2L, 26, 1L, "AST006"));// 345,456
 		
 
-		votos.add(new VotoData("MANUAL", 0L, 5, 1L, "AST001"));// 345,456
-		votos.add(new VotoData("MANUAL", 1L, 1, 1L, "AST001"));// 345,456
-		votos.add(new VotoData("MANUAL", 2L, 2, 1L, "AST001"));// 345,456
-		votos.add(new VotoData("MANUAL", 0L, 3, 1L, "AST002"));// 345,456
-		votos.add(new VotoData("MANUAL", 1L, 2, 1L, "AST002"));// 345,456
-		votos.add(new VotoData("MANUAL", 2L, 2, 1L, "AST002"));// 345,456
-		votos.add(new VotoData("MANUAL", 0L, 3, 1L, "AST003"));// 345,456
-		votos.add(new VotoData("MANUAL", 1L, 1, 1L, "AST003"));// 345,456
-		votos.add(new VotoData("MANUAL", 2L, 2, 1L, "AST003"));// 345,456
-		votos.add(new VotoData("MANUAL", 0L, 5, 1L, "AST004"));// 345,456
+		votos.add(new VotoData("MANUAL", 0L, 6, 1L, "AST001"));// 345,456
+		votos.add(new VotoData("MANUAL", 1L, 5, 1L, "AST001"));// 345,456
+		votos.add(new VotoData("MANUAL", 2L, 3, 1L, "AST001"));// 345,456
+		votos.add(new VotoData("MANUAL", 0L, 9, 1L, "AST002"));// 345,456
+		votos.add(new VotoData("MANUAL", 1L, 8, 1L, "AST002"));// 345,456
+		votos.add(new VotoData("MANUAL", 2L, 3, 1L, "AST002"));// 345,456
+		votos.add(new VotoData("MANUAL", 0L, 5, 1L, "AST003"));// 345,456
+		votos.add(new VotoData("MANUAL", 1L, 7, 1L, "AST003"));// 345,456
+		votos.add(new VotoData("MANUAL", 2L, 5, 1L, "AST003"));// 345,456
+		votos.add(new VotoData("MANUAL", 0L, 6, 1L, "AST004"));// 345,456
 		votos.add(new VotoData("MANUAL", 1L, 1, 1L, "AST004"));// 345,456
 		votos.add(new VotoData("MANUAL", 2L, 2, 1L, "AST004"));// 345,456
-		votos.add(new VotoData("MANUAL", 0L, 3, 1L, "AST005"));// 345,456
-		votos.add(new VotoData("MANUAL", 1L, 2, 1L, "AST005"));// 345,456
-		votos.add(new VotoData("MANUAL", 2L, 2, 1L, "AST005"));// 345,456
-		votos.add(new VotoData("MANUAL", 0L, 3, 1L, "AST006"));// 345,456
-		votos.add(new VotoData("MANUAL", 1L, 2, 1L, "AST006"));// 345,456
-		votos.add(new VotoData("MANUAL", 2L, 2, 1L, "AST006"));// 345,456
+		votos.add(new VotoData("MANUAL", 0L, 9, 1L, "AST005"));// 345,456
+		votos.add(new VotoData("MANUAL", 1L, 5, 1L, "AST005"));// 345,456
+		votos.add(new VotoData("MANUAL", 2L, 3, 1L, "AST005"));// 345,456
+		votos.add(new VotoData("MANUAL", 0L, 4, 1L, "AST006"));// 345,456
+		votos.add(new VotoData("MANUAL", 1L, 6, 1L, "AST006"));// 345,456
+		votos.add(new VotoData("MANUAL", 2L, 8, 1L, "AST006"));// 345,456
 
-		votos.add(new VotoData("ELECTRONICO", 0L, 52, 1L, "GAL001"));// 345,456
-		votos.add(new VotoData("ELECTRONICO", 1L, 10, 1L, "GAL001"));// 345,456
-		votos.add(new VotoData("ELECTRONICO", 2L, 20, 1L, "GAL001"));// 345,456
-		votos.add(new VotoData("ELECTRONICO", 0L, 32, 1L, "GAL002"));// 345,456
-		votos.add(new VotoData("ELECTRONICO", 1L, 21, 1L, "GAL002"));// 345,456
-		votos.add(new VotoData("ELECTRONICO", 2L, 26, 1L, "GAL002"));// 345,456
-		votos.add(new VotoData("ELECTRONICO", 0L, 15, 1L, "GAL003"));// 345,456
-		votos.add(new VotoData("ELECTRONICO", 1L, 19, 1L, "GAL003"));// 345,456
-		votos.add(new VotoData("ELECTRONICO", 2L, 25, 1L, "GAL003"));// 345,456
-		votos.add(new VotoData("ELECTRONICO", 0L, 52, 1L, "GAL004"));// 345,456
-		votos.add(new VotoData("ELECTRONICO", 1L, 10, 1L, "GAL004"));// 345,456
-		votos.add(new VotoData("ELECTRONICO", 2L, 20, 1L, "GAL004"));// 345,456
-		votos.add(new VotoData("ELECTRONICO", 0L, 32, 1L, "GAL005"));// 345,456
-		votos.add(new VotoData("ELECTRONICO", 1L, 21, 1L, "GAL005"));// 345,456
-		votos.add(new VotoData("ELECTRONICO", 2L, 26, 1L, "GAL005"));// 345,456
-		votos.add(new VotoData("ELECTRONICO", 0L, 32, 1L, "GAL006"));// 345,456
-		votos.add(new VotoData("ELECTRONICO", 1L, 21, 1L, "GAL006"));// 345,456
-		votos.add(new VotoData("ELECTRONICO", 2L, 26, 1L, "GAL006"));// 345,456
-
-		votos.add(new VotoData("MANUAL", 0L, 5, 1L, "GAL001"));// 345,456
-		votos.add(new VotoData("MANUAL", 1L, 1, 1L, "GAL001"));// 345,456
-		votos.add(new VotoData("MANUAL", 2L, 2, 1L, "GAL001"));// 345,456
+		votos.add(new VotoData("ELECTRONICO", 0L, 61, 1L, "GAL001"));// 345,456
+		votos.add(new VotoData("ELECTRONICO", 1L, 85, 1L, "GAL001"));// 345,456
+		votos.add(new VotoData("ELECTRONICO", 2L, 21, 1L, "GAL001"));// 345,456
+		votos.add(new VotoData("ELECTRONICO", 0L, 36, 1L, "GAL002"));// 345,456
+		votos.add(new VotoData("ELECTRONICO", 1L, 24, 1L, "GAL002"));// 345,456
+		votos.add(new VotoData("ELECTRONICO", 2L, 95, 1L, "GAL002"));// 345,456
+		votos.add(new VotoData("ELECTRONICO", 0L, 24, 1L, "GAL003"));// 345,456
+		votos.add(new VotoData("ELECTRONICO", 1L, 14, 1L, "GAL003"));// 345,456
+		votos.add(new VotoData("ELECTRONICO", 2L, 26, 1L, "GAL003"));// 345,456
+		votos.add(new VotoData("ELECTRONICO", 0L, 42, 1L, "GAL004"));// 345,456
+		votos.add(new VotoData("ELECTRONICO", 1L, 16, 1L, "GAL004"));// 345,456
+		votos.add(new VotoData("ELECTRONICO", 2L, 62, 1L, "GAL004"));// 345,456
+		votos.add(new VotoData("ELECTRONICO", 0L, 14, 1L, "GAL005"));// 345,456
+		votos.add(new VotoData("ELECTRONICO", 1L, 12, 1L, "GAL005"));// 345,456
+		votos.add(new VotoData("ELECTRONICO", 2L, 11, 1L, "GAL005"));// 345,456
+		votos.add(new VotoData("ELECTRONICO", 0L, 35, 1L, "GAL006"));// 345,456
+		votos.add(new VotoData("ELECTRONICO", 1L, 24, 1L, "GAL006"));// 345,456
+		votos.add(new VotoData("ELECTRONICO", 2L, 30, 1L, "GAL006"));// 345,456
+		
+		votos.add(new VotoData("MANUAL", 0L, 6, 1L, "GAL001"));// 345,456
+		votos.add(new VotoData("MANUAL", 1L, 2, 1L, "GAL001"));// 345,456
+		votos.add(new VotoData("MANUAL", 2L, 4, 1L, "GAL001"));// 345,456
 		votos.add(new VotoData("MANUAL", 0L, 3, 1L, "GAL002"));// 345,456
-		votos.add(new VotoData("MANUAL", 1L, 2, 1L, "GAL002"));// 345,456
-		votos.add(new VotoData("MANUAL", 2L, 2, 1L, "GAL002"));// 345,456
-		votos.add(new VotoData("MANUAL", 0L, 3, 1L, "GAL003"));// 345,456
-		votos.add(new VotoData("MANUAL", 1L, 1, 1L, "GAL003"));// 345,456
-		votos.add(new VotoData("MANUAL", 2L, 2, 1L, "GAL003"));// 345,456
-		votos.add(new VotoData("MANUAL", 0L, 5, 1L, "GAL004"));// 345,456
-		votos.add(new VotoData("MANUAL", 1L, 1, 1L, "GAL004"));// 345,456
-		votos.add(new VotoData("MANUAL", 2L, 2, 1L, "GAL004"));// 345,456
-		votos.add(new VotoData("MANUAL", 0L, 3, 1L, "GAL005"));// 345,456
-		votos.add(new VotoData("MANUAL", 1L, 2, 1L, "GAL005"));// 345,456
-		votos.add(new VotoData("MANUAL", 2L, 2, 1L, "GAL005"));// 345,456
-		votos.add(new VotoData("MANUAL", 0L, 3, 1L, "GAL006"));// 345,456
-		votos.add(new VotoData("MANUAL", 1L, 2, 1L, "GAL006"));// 345,456
-		votos.add(new VotoData("MANUAL", 2L, 2, 1L, "GAL006"));// 345,456
+		votos.add(new VotoData("MANUAL", 1L, 1, 1L, "GAL002"));// 345,456
+		votos.add(new VotoData("MANUAL", 2L, 8, 1L, "GAL002"));// 345,456
+		votos.add(new VotoData("MANUAL", 0L, 7, 1L, "GAL003"));// 345,456
+		votos.add(new VotoData("MANUAL", 1L, 5, 1L, "GAL003"));// 345,456
+		votos.add(new VotoData("MANUAL", 2L, 4, 1L, "GAL003"));// 345,456
+		votos.add(new VotoData("MANUAL", 0L, 1, 1L, "GAL004"));// 345,456
+		votos.add(new VotoData("MANUAL", 1L, 6, 1L, "GAL004"));// 345,456
+		votos.add(new VotoData("MANUAL", 2L, 3, 1L, "GAL004"));// 345,456
+		votos.add(new VotoData("MANUAL", 0L, 8, 1L, "GAL005"));// 345,456
+		votos.add(new VotoData("MANUAL", 1L, 5, 1L, "GAL005"));// 345,456
+		votos.add(new VotoData("MANUAL", 2L, 4, 1L, "GAL005"));// 345,456
+		votos.add(new VotoData("MANUAL", 0L, 1, 1L, "GAL006"));// 345,456
+		votos.add(new VotoData("MANUAL", 1L, 9, 1L, "GAL006"));// 345,456
+		votos.add(new VotoData("MANUAL", 2L, 5, 1L, "GAL006"));// 345,456
 
 		votos.add(new VotoData("ELECTRONICO", 0L, 52, 1L, "CAN001"));// 345,456
 		votos.add(new VotoData("ELECTRONICO", 1L, 10, 1L, "CAN001"));// 345,456
@@ -412,22 +412,23 @@ public class Jdbc {
 		PersonaData persona = null;
 		for (String comunidad : comunidades)
 			for (Integer i = 0; i < 1000; i++) {
-				String codigo = comunidad;
+
+				String sufijo;
 				if (i < 300)
-					codigo.concat("001");
+					sufijo = "001";
 				else if (i < 450)
-					codigo.concat("002");
+					sufijo = "002";
 				else if (i < 600)
-					codigo.concat("003");
+					sufijo = "003";
 				else if (i < 750)
-					codigo.concat("004");
+					sufijo = "004";
 				else if (i < 900)
-					codigo.concat("005");
+					sufijo = "005";
 				else
-					codigo.concat("006");
+					sufijo = "006";
 				persona = new PersonaData("Pepe".concat(i.toString()),
 						String.valueOf(000000000 + i).concat(comunidad.substring(0, 1)),
-						"pepe".concat(i.toString()).concat("@mail.com"), codigo, "P3P3pepÇ");
+						"pepe".concat(i.toString()).concat("@mail.com"), comunidad.concat(sufijo), "P3P3pepÇ");
 				personas.add(persona);
 
 			}

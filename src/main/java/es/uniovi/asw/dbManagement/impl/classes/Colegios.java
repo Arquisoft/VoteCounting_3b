@@ -24,8 +24,6 @@ public class Colegios {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 
-				// public ColegioData(String codColegioElectoral, String
-				// circunscripcion, String ciudad, String comunidadAutonoma) {
 				colegios.add(new ColegioData(rs.getString("codColegioElectoral"), rs.getString("circunscripcion"),
 						rs.getString("ciudad"), rs.getString("comunidadAutonoma")));
 			}

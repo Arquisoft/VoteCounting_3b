@@ -44,12 +44,16 @@ public class Censo {
 	}
 
 	public Integer total() {
-		Integer total = 0;
+		int total = 0;
 		try {
 			c = Jdbc.getConnection();
-			ps = c.prepareStatement("SELECT COUNT(*) FROM CENSOS");
+			ps = c.prepareStatement("SELECT * FROM CENSOS");
 			rs = ps.executeQuery();
-			total = rs.getInt(1);
+			int fila = 0;
+			while(rs.next())
+				fila=rs.getRow();
+			total = fila;
+			System.out.println(fila);
 			c.close();
 		} catch (Throwable e) {
 			System.out.println("Error al leer los datos de las mesas");
