@@ -48,7 +48,7 @@ public class PersonasCenso {
 		List<String> codigos = new ArrayList<String>();
 		int contador=0;
 		for(ColegioData c:colegios)
-			if(c.getCircunscripcion().equals(ciudad))
+			if(c.getCiudad().equals(ciudad))
 				codigos.add(c.getCodColegioElectoral());
 		for(PersonaData p:personas)
 			if(codigos.contains(p.getCodColegioElectoral()))

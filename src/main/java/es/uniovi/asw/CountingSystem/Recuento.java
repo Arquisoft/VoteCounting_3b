@@ -132,7 +132,8 @@ public class Recuento {
 
 			participacion.put(lugar, p * 100);
 		}
-		return participacion.get(lugar);
+		return Math.floor(participacion.get(lugar)*100)/100;
+		//return participacion.get(lugar);
 	}
 
 	public static Map<String, Integer> getVotosPorCiudad(String lugar) {

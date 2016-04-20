@@ -1,7 +1,7 @@
 package es.uniovi.asw;
 
 import static org.hamcrest.Matchers.containsString;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -52,9 +52,9 @@ public class MainControllerTest {
 	@Test
 	public void testVotosTotales() throws Exception {
 		Map<String, Integer> votos = Recuento.getMapaVotosTotales().get("España");
-		assertTrue("El número de votos totales afirmativos es " + votos.get("SI"), votos.get("SI").equals(711));
-		assertTrue("El número de votos totales negativos es " + votos.get("NO"), votos.get("NO").equals(333));
-		assertTrue("El número de votos totales en blanco es " + votos.get("BLANCO"), votos.get("BLANCO").equals(465));
+		assertTrue("El número de votos totales afirmativos es " + votos.get("SI"), votos.get("SI").equals(778));
+		assertTrue("El número de votos totales negativos es " + votos.get("NO"), votos.get("NO").equals(529));
+		assertTrue("El número de votos totales en blanco es " + votos.get("BLANCO"), votos.get("BLANCO").equals(594));
 	}
 
 	@Test
@@ -87,10 +87,10 @@ public class MainControllerTest {
 			votosBlanco = votos.get("BLANCO");
 			if (comunidad.equals("Asturias"))
 				assertTrue(votosSi + " " + votosNo + " " + votosBlanco,
-						votosSi.equals(237) && votosNo.equals(111) && votosBlanco.equals(155));
+						votosSi.equals(303) && votosNo.equals(215) && votosBlanco.equals(166));
 			else if (comunidad.equals("Galicia"))
 				assertTrue(votosSi + " " + votosNo + " " + votosBlanco,
-						votosSi.equals(237) && votosNo.equals(111) && votosBlanco.equals(155));
+						votosSi.equals(238) && votosNo.equals(203) && votosBlanco.equals(273));
 			else if (comunidad.equals("Cantabria"))
 				assertTrue(votosSi + " " + votosNo + " " + votosBlanco,
 						votosSi.equals(237) && votosNo.equals(111) && votosBlanco.equals(155));
@@ -100,7 +100,20 @@ public class MainControllerTest {
 	
 	@Test
 	public void testParticipacionPorLugar(){
-		System.out.println(Recuento.getParticipacion("Asturias"));
+		Double españa = Recuento.getParticipacion("España");
+		Double oviedo = Recuento.getParticipacion("Oviedo");
+		Double vigo = Recuento.getParticipacion("Vigo");
+		Double santander = Recuento.getParticipacion("Santander");
+		Double asturias = Recuento.getParticipacion("Asturias");
+		Double galicia = Recuento.getParticipacion("Galicia");
+		Double cantabria = Recuento.getParticipacion("Cantabria");
+		assertTrue("La participacion en España es del " + españa + " %", españa==63.36);
+		assertTrue("La participacion en Oviedo es del " + oviedo + " %", oviedo==68.4);
+		assertTrue("La participacion en Vigo es del " + vigo + " %", vigo==71.39);
+		assertTrue("La participacion en Santander es del " + santander + " %", santander==50.3);
+		assertTrue("La participacion en Asturias es del " + asturias + " %", asturias==68.4);
+		assertTrue("La participacion en Galicia es del " + galicia + " %", galicia==71.39);
+		assertTrue("La participacion en Cantabria es del " + cantabria + " %", cantabria==50.3);
 	}
 
 }
