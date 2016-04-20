@@ -23,8 +23,8 @@ public class Main {
 	private static final Logger LOG = LoggerFactory.getLogger(Main.class);
 	private static final List<SearchOptions> ciudades = new ArrayList<SearchOptions>();
 	private static final List<SearchOptions> comunidades = new ArrayList<SearchOptions>();
-	
-	@RequestMapping(value = "/", method = {RequestMethod.POST,RequestMethod.GET})
+
+	@RequestMapping(value = "/", method = { RequestMethod.POST, RequestMethod.GET })
 	public ModelAndView landing(Model model) {
 		ModelAndView mv = new ModelAndView("index");
 		LOG.info("Landing page access");
@@ -32,23 +32,25 @@ public class Main {
 		return mv;
 	}
 
-	@RequestMapping(value = "/statistics", method = { RequestMethod.POST, RequestMethod.GET})
+	@RequestMapping(value = "/statistics", method = { RequestMethod.POST, RequestMethod.GET })
 	public ModelAndView estadisticas() {
 		ModelAndView mv = new ModelAndView("statistics");
 		Map<String, Integer> votos = Recuento.getMapaVotosTotales().get("España");
 		mv.addObject("votos", votos);
-		for(String s:Recuento.getCiudades())
-			ciudades.add(new SearchOptions(s,s));
-		for(String s:Recuento.getComunidades())
-			comunidades.add(new SearchOptions(s,s));
+		if (ciudades.isEmpty())
+			for (String s : Recuento.getCiudades())
+				ciudades.add(new SearchOptions(s, s));
+		if (comunidades.isEmpty())
+			for (String s : Recuento.getComunidades())
+				comunidades.add(new SearchOptions(s, s));
 		mv.addObject("ciudades", ciudades);
 		mv.addObject("comunidades", comunidades);
 		mv.addObject("participacion", Recuento.getParticipacion("España").toString());
 		return mv;
 	}
 
-	@RequestMapping(value = "/statisticsCiudad", method = {RequestMethod.POST, RequestMethod.GET})
-	public ModelAndView estadisticasCiudad(@RequestParam(name = "optionsListId",required=true) String lugar) {
+	@RequestMapping(value = "/statisticsCiudad", method = { RequestMethod.POST, RequestMethod.GET })
+	public ModelAndView estadisticasCiudad(@RequestParam(name = "optionsListId", required = true) String lugar) {
 		ModelAndView mv = new ModelAndView("statistics");
 		Map<String, Integer> votos = Recuento.getVotosPorCiudad(lugar);
 		mv.addObject("votos", votos);
@@ -59,8 +61,8 @@ public class Main {
 		return mv;
 	}
 
-	@RequestMapping(value = "/statisticsComunidad", method = {RequestMethod.POST, RequestMethod.GET})
-	public ModelAndView estadisticasComunidad(@RequestParam(value = "optionsListId",required=true) String lugar) {
+	@RequestMapping(value = "/statisticsComunidad", method = { RequestMethod.POST, RequestMethod.GET })
+	public ModelAndView estadisticasComunidad(@RequestParam(value = "optionsListId", required = true) String lugar) {
 		ModelAndView mv = new ModelAndView("statistics");
 		Map<String, Integer> votos = Recuento.getVotosPorComunidad(lugar);
 		mv.addObject("votos", votos);
@@ -69,7 +71,7 @@ public class Main {
 		mv.addObject("participacion", Recuento.getParticipacion(lugar));
 		return mv;
 	}
-	
+
 	public class SearchOptions {
 		private String option;
 		private String optionName;
@@ -100,6 +102,5 @@ public class Main {
 		}
 
 	}
-
 
 }

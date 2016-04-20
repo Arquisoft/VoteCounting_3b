@@ -3,10 +3,15 @@
     <head>
     </head>
 <body>
- <h1>Bienvenido al sistema de recuento oficial</h1> 
+<div id="textoTitulo">
+    <h1>Bienvenido al sistema de recuento oficial</h1> 
+</div>
+<div id="textoEntrada">
+    <h2>Consulta los resultados generales del referendum,<br/> los datos de tu comunidad<br/> o qu&eacute; opci&oacute;n ha ganado en tu ciudad</h2>
+</div>
  <div id="dashboard_div">
     <form th:action="@{statistics}" method="post">
-        <button type="submit">Ver estadísticas</button>
+        <button type="submit">Ver resultados</button>
     </form>
  </div>  
     
