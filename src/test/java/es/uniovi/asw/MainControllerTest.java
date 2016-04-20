@@ -1,14 +1,13 @@
 package es.uniovi.asw;
 
 import static org.hamcrest.Matchers.containsString;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -23,7 +22,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import es.uniovi.asw.CountingSystem.Recuento;
-import es.uniovi.asw.dbManagement.model.ColegioData;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
@@ -67,10 +65,10 @@ public class MainControllerTest {
 			votosBlanco = votos.get("BLANCO");
 			if (ciudad.equals("Oviedo"))
 				assertTrue(votosSi + " " + votosNo + " " + votosBlanco,
-						votosSi.equals(237) && votosNo.equals(111) && votosBlanco.equals(155));
+						votosSi.equals(303) && votosNo.equals(215) && votosBlanco.equals(166));
 			else if (ciudad.equals("Vigo"))
 				assertTrue(votosSi + " " + votosNo + " " + votosBlanco,
-						votosSi.equals(237) && votosNo.equals(111) && votosBlanco.equals(155));
+						votosSi.equals(238) && votosNo.equals(203) && votosBlanco.equals(273));
 			else if (ciudad.equals("Santander"))
 				assertTrue(votosSi + " " + votosNo + " " + votosBlanco,
 						votosSi.equals(237) && votosNo.equals(111) && votosBlanco.equals(155));

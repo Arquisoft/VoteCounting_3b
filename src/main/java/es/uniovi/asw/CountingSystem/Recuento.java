@@ -1,7 +1,6 @@
 package es.uniovi.asw.CountingSystem;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -78,7 +77,7 @@ public class Recuento {
 
 	public static int getCensadosTotales() {
 		if (censadosTotales == 0) {
-			censadosTotales = Factories.persistence.census().getTotalCenso();
+			censadosTotales = Factories.services.CensusInfo().getTotalCenso();
 		}
 		return censadosTotales;
 	}
@@ -99,12 +98,6 @@ public class Recuento {
 			censadosCiudades.put(ciudad, vot);
 		}
 		return censadosCiudades.get(ciudad);
-	}
-
-	public static Map<String, Integer> getCensoAndColegio() {
-		if (censoPorColegio == null)
-			censoPorColegio = Factories.services.CensusInfo().getCensoAndColegio();
-		return censoPorColegio;
 	}
 
 	public static Double getParticipacion(String lugar) {

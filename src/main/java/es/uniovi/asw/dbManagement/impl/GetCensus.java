@@ -12,12 +12,6 @@ import es.uniovi.asw.dbManagement.model.PersonaData;
 
 public class GetCensus implements IGetCensus{
 
-
-	@Override
-	public Map<String, Integer> getCensoPorColegio() {
-		return new Censo().getCensoPorColegio();
-	}
-
 	@Override
 	public Integer getTotalCenso() {
 		return new Censo().total();

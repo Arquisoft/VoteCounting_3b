@@ -11,9 +11,5 @@ public class VotesInfo {
 		return Factories.persistence.votes().getVotos();
 	}
 
-	public Integer getParticipacion(String lugar) {
-		Integer censo = Factories.persistence.census().getCensoPorLugar(lugar);
-		return null;
-	}
 
 }

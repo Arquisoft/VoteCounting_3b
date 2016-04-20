@@ -7,12 +7,6 @@ import es.uniovi.asw.dbManagement.model.ColegioData;
 import es.uniovi.asw.dbManagement.model.PersonaData;
 
 public interface IGetCensus {
-	
-	/***
-	 * Recuento de electores por colegio
-	 * @return mapa con colegios y número de electores
-	 */
-	public Map<String,Integer> getCensoPorColegio();
 
 	public Integer getTotalCenso();
 

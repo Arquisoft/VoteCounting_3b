@@ -17,11 +17,5 @@ public interface IGetVotesInfo {
 	public int getVotosPorOpcion(String opcion);
 	
 	public List<VotoData> getVotosTotales();
-	
-	public int getVotosPorTipo(String tipo);
-	
-	public int getVotosPorOpcionYTipo(String opcion, String tipo);
-
-	public Integer getParticipacion(String lugar);
 
 }

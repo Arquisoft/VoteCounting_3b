@@ -20,29 +20,6 @@ public class Censo {
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 
-	public Map<String, Integer> getCensoPorColegio() {
-		Map<String, Integer> m = new HashMap<String, Integer>();
-
-		try {
-			c = Jdbc.getConnection();
-			ps = c.prepareStatement("SELECT CODCOLEGIOELECTORAL FROM CENSOS");
-			rs = ps.executeQuery();
-			while (rs.next()) {
-				String key = rs.getString(1);
-				if (m.containsKey(key))
-					m.replace(key, m.get(key), m.get(key) + 1);
-				else
-					m.put(rs.getString("CODCOLEGIOELECTORAL"), 1);
-			}
-			c.close();
-
-		} catch (Throwable e) {
-			System.out.println("Error al leer los datos de las mesas");
-			e.printStackTrace();
-		}
-		return m;
-	}
-
 	public Integer total() {
 		int total = 0;
 		try {

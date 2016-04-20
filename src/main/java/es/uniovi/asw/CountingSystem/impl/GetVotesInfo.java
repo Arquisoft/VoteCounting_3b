@@ -25,21 +25,4 @@ public class GetVotesInfo implements IGetVotesInfo {
 		return new VotesInfo().getVotosTotales();
 	}
 
-	@Override
-	public int getVotosPorTipo(String tipo) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getVotosPorOpcionYTipo(String opcion, String tipo) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public  Integer getParticipacion(String lugar) {
-		return new VotesInfo().getParticipacion(lugar);
-	}
-	
 }
