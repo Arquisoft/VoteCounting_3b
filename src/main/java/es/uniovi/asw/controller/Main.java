@@ -28,11 +28,12 @@ public class Main {
 	public ModelAndView landing(Model model) {
 		ModelAndView mv = new ModelAndView("index");
 		LOG.info("Landing page access");
+
 		return mv;
 	}
 
 	@RequestMapping(value = "/statistics", method = { RequestMethod.POST, RequestMethod.GET})
-	public ModelAndView estadisticasCiudad() {
+	public ModelAndView estadisticas() {
 		ModelAndView mv = new ModelAndView("statistics");
 		Map<String, Integer> votos = Recuento.getMapaVotosTotales().get("España");
 		mv.addObject("votos", votos);
@@ -42,14 +43,12 @@ public class Main {
 			comunidades.add(new SearchOptions(s,s));
 		mv.addObject("ciudades", ciudades);
 		mv.addObject("comunidades", comunidades);
-		System.out.println("España " + Recuento.getParticipacion("España"));
 		mv.addObject("participacion", Recuento.getParticipacion("España").toString());
 		return mv;
 	}
 
 	@RequestMapping(value = "/statisticsCiudad", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView estadisticasCiudad(@RequestParam(name = "optionsListId",required=true) String lugar) {
-		System.out.println("Ciudad: " + lugar);
 		ModelAndView mv = new ModelAndView("statistics");
 		Map<String, Integer> votos = Recuento.getVotosPorCiudad(lugar);
 		mv.addObject("votos", votos);
@@ -62,7 +61,6 @@ public class Main {
 
 	@RequestMapping(value = "/statisticsComunidad", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView estadisticasComunidad(@RequestParam(value = "optionsListId",required=true) String lugar) {
-		System.out.println("Comunidad: " + lugar);
 		ModelAndView mv = new ModelAndView("statistics");
 		Map<String, Integer> votos = Recuento.getVotosPorComunidad(lugar);
 		mv.addObject("votos", votos);
