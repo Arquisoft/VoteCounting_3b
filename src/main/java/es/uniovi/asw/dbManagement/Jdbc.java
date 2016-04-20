@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -83,12 +84,19 @@ public class Jdbc {
 		Class.forName(DRIVER).newInstance();
 		Connection con = getConnection();
 		java.sql.Statement stm = con.createStatement();
-		stm.execute("delete from VOTOS");
-		stm.execute("delete from OPCION");
-		stm.execute("delete from VOTANTE");
-		stm.execute("delete from VOTACION");
-		stm.execute("delete from CENSOS");
-		stm.execute("delete from COLEGIOELECTORAL");
+
+		if (tablaExiste("VOTOS"))
+			stm.execute("delete from VOTOS");
+		if (tablaExiste("OPCION"))
+			stm.execute("delete from OPCION");
+		if (tablaExiste("VOTANTE"))
+			stm.execute("delete from VOTANTE");
+		if (tablaExiste("VOTACION"))
+			stm.execute("delete from VOTACION");
+		if (tablaExiste("CENSOS"))
+			stm.execute("delete from CENSOS");
+		if (tablaExiste("COLEGIOELECTORAL"))
+			stm.execute("delete from COLEGIOELECTORAL");
 
 		stm.execute(_createColegioElectoral);
 		stm.execute(_createCensos);
@@ -96,6 +104,7 @@ public class Jdbc {
 		stm.execute(_createVotacion);
 		stm.execute(_createOpcion);
 		stm.execute(_createVotos);
+
 		rellenarColegioElectoral();
 		rellenarVotacion();
 		rellenarCensos();
@@ -103,12 +112,22 @@ public class Jdbc {
 
 		// stm.execute("truncate table VOTOS");
 
-		
-		 rellenarVotos();
-		 
+		rellenarVotos();
+
 		stm.close();
 		con.close();
 
+	}
+
+	private static boolean tablaExiste(String tabla) throws SQLException {
+		Connection conn = getConnection(); // get a DB connection from somewhere
+		ResultSet rset = conn.getMetaData().getTables(null, null, tabla, null);
+		boolean tableExists = false;
+		if (rset.next()) {
+			tableExists = true;
+		}
+		conn.close();
+		return tableExists;
 	}
 
 	private static void rellenarVotacion() {
@@ -137,8 +156,6 @@ public class Jdbc {
 
 		List<VotoData> votos = new ArrayList<VotoData>();
 
-
-		
 		votos.add(new VotoData("ELECTRONICO", 0L, 65, 1L, "AST001"));// 345,456
 		votos.add(new VotoData("ELECTRONICO", 1L, 12, 1L, "AST001"));// 345,456
 		votos.add(new VotoData("ELECTRONICO", 2L, 25, 1L, "AST001"));// 345,456
@@ -157,7 +174,6 @@ public class Jdbc {
 		votos.add(new VotoData("ELECTRONICO", 0L, 68, 1L, "AST006"));// 345,456
 		votos.add(new VotoData("ELECTRONICO", 1L, 82, 1L, "AST006"));// 345,456
 		votos.add(new VotoData("ELECTRONICO", 2L, 26, 1L, "AST006"));// 345,456
-		
 
 		votos.add(new VotoData("MANUAL", 0L, 6, 1L, "AST001"));// 345,456
 		votos.add(new VotoData("MANUAL", 1L, 5, 1L, "AST001"));// 345,456
@@ -196,7 +212,7 @@ public class Jdbc {
 		votos.add(new VotoData("ELECTRONICO", 0L, 35, 1L, "GAL006"));// 345,456
 		votos.add(new VotoData("ELECTRONICO", 1L, 24, 1L, "GAL006"));// 345,456
 		votos.add(new VotoData("ELECTRONICO", 2L, 30, 1L, "GAL006"));// 345,456
-		
+
 		votos.add(new VotoData("MANUAL", 0L, 6, 1L, "GAL001"));// 345,456
 		votos.add(new VotoData("MANUAL", 1L, 2, 1L, "GAL001"));// 345,456
 		votos.add(new VotoData("MANUAL", 2L, 4, 1L, "GAL001"));// 345,456
@@ -253,15 +269,17 @@ public class Jdbc {
 		votos.add(new VotoData("MANUAL", 0L, 3, 1L, "CAN006"));// 345,456
 		votos.add(new VotoData("MANUAL", 1L, 2, 1L, "CAN006"));// 345,456
 		votos.add(new VotoData("MANUAL", 2L, 2, 1L, "CAN006"));// 345,456
-		
-		//List<ColegioData> colegios = Factories.persistence.census().getColegios();
-		
-		/*for(ColegioData c:colegios){
-			List<VotanteData> votantes = Factories.persistence.votes().getVotantesPorColegio(c.getCodColegioElectoral());
-			for(VotanteData v:votantes)
-				
-					}
-			*/
+
+		// List<ColegioData> colegios =
+		// Factories.persistence.census().getColegios();
+
+		/*
+		 * for(ColegioData c:colegios){ List<VotanteData> votantes =
+		 * Factories.persistence.votes().getVotantesPorColegio(c.
+		 * getCodColegioElectoral()); for(VotanteData v:votantes)
+		 * 
+		 * }
+		 */
 		int i = 0;
 		for (VotoData v : votos) {
 			try {
@@ -393,7 +411,7 @@ public class Jdbc {
 			e.printStackTrace();
 		}
 		for (PersonaData v : personas) {
-			int i=personas.indexOf(v);
+			int i = personas.indexOf(v);
 			if (i % 10 != 0) {
 				if (i % 6 != 0) {
 					rellenaVotante(v, "ELECTRONICO");
