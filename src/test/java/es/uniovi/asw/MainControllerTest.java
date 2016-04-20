@@ -113,5 +113,27 @@ public class MainControllerTest {
 		assertTrue("La participacion en Galicia es del " + galicia + " %", galicia==71.39);
 		assertTrue("La participacion en Cantabria es del " + cantabria + " %", cantabria==50.3);
 	}
+	
+	@Test
+	public void testCensadosTotales(){
+		int total = Recuento.getCensadosTotales();
+		assertTrue("El censo total es de "+ total +" personas",total==3000);
+	}
+	
+	@Test
+	public void testCensadosCiudad(){
+		int oviedo = Recuento.getCensadosCiudad("Oviedo");
+		int vigo = Recuento.getCensadosCiudad("Vigo");
+		int santander = Recuento.getCensadosCiudad("Santander");
+		assertTrue("El censo total es de "+ oviedo +" personas",oviedo==1000);
+		assertTrue("El censo total es de "+ vigo +" personas",vigo==1000);
+		assertTrue("El censo total es de "+ santander +" personas",santander==1000);
+	}
+	
+	@Test
+	public void testCensadosComunidad(){
+		int asturias = Recuento.getCensadosComunidad("Asturias");
+		assertTrue("El censo total es de "+ asturias +" personas",asturias==1000);
+	}
 
 }

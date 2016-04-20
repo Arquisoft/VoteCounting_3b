@@ -31,7 +31,7 @@ public class Main {
 		return mv;
 	}
 
-	@RequestMapping(value = "/statistics", method = { RequestMethod.POST})
+	@RequestMapping(value = "/statistics", method = { RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView estadisticasCiudad() {
 		ModelAndView mv = new ModelAndView("statistics");
 		Map<String, Integer> votos = Recuento.getMapaVotosTotales().get("España");
@@ -47,7 +47,7 @@ public class Main {
 		return mv;
 	}
 
-	@RequestMapping(value = "/statisticsCiudad", method = RequestMethod.POST)
+	@RequestMapping(value = "/statisticsCiudad", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView estadisticasCiudad(@RequestParam(name = "optionsListId",required=true) String lugar) {
 		System.out.println("Ciudad: " + lugar);
 		ModelAndView mv = new ModelAndView("statistics");
@@ -60,7 +60,7 @@ public class Main {
 		return mv;
 	}
 
-	@RequestMapping(value = "/statisticsComunidad", method = RequestMethod.POST)
+	@RequestMapping(value = "/statisticsComunidad", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView estadisticasComunidad(@RequestParam(value = "optionsListId",required=true) String lugar) {
 		System.out.println("Comunidad: " + lugar);
 		ModelAndView mv = new ModelAndView("statistics");
