@@ -22,11 +22,8 @@ h2{
 	color:antiquewhite;
 }
 
-body.div:dashboard_div{
-	align-content: rigth;
-	float: right;
-	font-family: Helvetica;
-	color: black;
+table{
+    padding-left: 10px;
 }
 
 

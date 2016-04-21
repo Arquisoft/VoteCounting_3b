@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,10 +47,8 @@ public class Jdbc {
 		} catch (InstantiationException e) {
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -63,60 +60,59 @@ public class Jdbc {
 	private static void crearDB()
 			throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
 		// ejecutamos el script de creacion de la BD
-	
-/*
-		String _createColegioElectoral = "CREATE TABLE IF NOT EXISTS COLEGIOELECTORAL(codColegioElectoral VARCHAR(255) not null,circunscripcion VARCHAR(255) not null,ciudad VARCHAR(255) not null,comunidadAutonoma VARCHAR(255) not null,PRIMARY KEY(codColegioElectoral))";
-		String _createCensos = "CREATE TABLE IF NOT EXISTS CENSOS(id INTEGER NOT NULL,nombre VARCHAR(255),nif VARCHAR(255),email VARCHAR(255),codColegioElectoral VARCHAR(255),password VARCHAR(255),PRIMARY KEY(nif))";
-		String _createVotacion = "CREATE TABLE IF NOT EXISTS VOTACION(id BIGINT not null,diaInicio DATE not null,diaFin DATE not null,tipoVotacion VARCHAR(255) not null,PRIMARY KEY(id))";
-		String _createVotante = "CREATE TABLE IF NOT EXISTS VOTANTE(nif VARCHAR(255) not null,tipoVoto VARCHAR(255) not null,estado BOOLEAN not null,idVotacion BIGINT not null,PRIMARY KEY(nif),FOREIGN KEY(idVotacion) REFERENCES VOTACION(id),FOREIGN KEY(nif) REFERENCES CENSOS(nif))";
-		String _createOpcion = "CREATE TABLE IF NOT EXISTS OPCION(id BIGINT not null,nombre VARCHAR(255),idVotacion BIGINT not null,PRIMARY KEY(id),FOREIGN KEY(idVotacion) REFERENCES VOTACION(id))";
-		String _createVotos = "CREATE TABLE IF NOT EXISTS VOTOS(id BIGINT not null,tipoVoto VARCHAR(255) not null,opcionEscogida BIGINT not null,totalVotos INTEGER not null,idVotacion BIGINT not null,colegioElectoral VARCHAR(255) not null,PRIMARY KEY(opcionEscogida, idVotacion, colegioElectoral, tipoVoto),FOREIGN KEY(opcionEscogida) REFERENCES OPCION(id),FOREIGN KEY(idVotacion) REFERENCES VOTACION(id),FOREIGN KEY(colegioElectoral) REFERENCES COLEGIOELECTORAL(codColegioElectoral))";
-*/
+
+		/*
+		 * String _createColegioElectoral =
+		 * "CREATE TABLE IF NOT EXISTS COLEGIOELECTORAL(codColegioElectoral VARCHAR(255) not null,circunscripcion VARCHAR(255) not null,ciudad VARCHAR(255) not null,comunidadAutonoma VARCHAR(255) not null,PRIMARY KEY(codColegioElectoral))"
+		 * ; String _createCensos =
+		 * "CREATE TABLE IF NOT EXISTS CENSOS(id INTEGER NOT NULL,nombre VARCHAR(255),nif VARCHAR(255),email VARCHAR(255),codColegioElectoral VARCHAR(255),password VARCHAR(255),PRIMARY KEY(nif))"
+		 * ; String _createVotacion =
+		 * "CREATE TABLE IF NOT EXISTS VOTACION(id BIGINT not null,diaInicio DATE not null,diaFin DATE not null,tipoVotacion VARCHAR(255) not null,PRIMARY KEY(id))"
+		 * ; String _createVotante =
+		 * "CREATE TABLE IF NOT EXISTS VOTANTE(nif VARCHAR(255) not null,tipoVoto VARCHAR(255) not null,estado BOOLEAN not null,idVotacion BIGINT not null,PRIMARY KEY(nif),FOREIGN KEY(idVotacion) REFERENCES VOTACION(id),FOREIGN KEY(nif) REFERENCES CENSOS(nif))"
+		 * ; String _createOpcion =
+		 * "CREATE TABLE IF NOT EXISTS OPCION(id BIGINT not null,nombre VARCHAR(255),idVotacion BIGINT not null,PRIMARY KEY(id),FOREIGN KEY(idVotacion) REFERENCES VOTACION(id))"
+		 * ; String _createVotos =
+		 * "CREATE TABLE IF NOT EXISTS VOTOS(id BIGINT not null,tipoVoto VARCHAR(255) not null,opcionEscogida BIGINT not null,totalVotos INTEGER not null,idVotacion BIGINT not null,colegioElectoral VARCHAR(255) not null,PRIMARY KEY(opcionEscogida, idVotacion, colegioElectoral, tipoVoto),FOREIGN KEY(opcionEscogida) REFERENCES OPCION(id),FOREIGN KEY(idVotacion) REFERENCES VOTACION(id),FOREIGN KEY(colegioElectoral) REFERENCES COLEGIOELECTORAL(codColegioElectoral))"
+		 * ;
+		 */
 		Class.forName(DRIVER).newInstance();
 		Connection con = getConnection();
 		java.sql.Statement stm = con.createStatement();
-		
+
 		stm.execute("drop table if exists votos");
 		stm.execute("drop table if exists opcion");
 		stm.execute("drop table if exists votante");
 		stm.execute("drop table if exists votacion");
 		stm.execute("drop table if exists censos");
 		stm.execute("drop table if exists colegioelectoral");
-		
+
 		String _createColegioElectoral = "CREATE TABLE COLEGIOELECTORAL(codColegioElectoral VARCHAR(255) not null,circunscripcion VARCHAR(255) not null,ciudad VARCHAR(255) not null,comunidadAutonoma VARCHAR(255) not null,PRIMARY KEY(codColegioElectoral))";
 		String _createCensos = "CREATE TABLE CENSOS(id INTEGER NOT NULL,nombre VARCHAR(255),nif VARCHAR(255),email VARCHAR(255),codColegioElectoral VARCHAR(255),password VARCHAR(255),PRIMARY KEY(nif))";
 		String _createVotacion = "CREATE TABLE VOTACION(id BIGINT not null,diaInicio DATE not null,diaFin DATE not null,tipoVotacion VARCHAR(255) not null,PRIMARY KEY(id))";
 		String _createVotante = "CREATE TABLE VOTANTE(nif VARCHAR(255) not null,tipoVoto VARCHAR(255) not null,estado BOOLEAN not null,idVotacion BIGINT not null,PRIMARY KEY(nif),FOREIGN KEY(idVotacion) REFERENCES VOTACION(id),FOREIGN KEY(nif) REFERENCES CENSOS(nif))";
 		String _createOpcion = "CREATE TABLE OPCION(id BIGINT not null,nombre VARCHAR(255),idVotacion BIGINT not null,PRIMARY KEY(id),FOREIGN KEY(idVotacion) REFERENCES VOTACION(id))";
 		String _createVotos = "CREATE TABLE VOTOS(id BIGINT not null,tipoVoto VARCHAR(255) not null,opcionEscogida BIGINT not null,totalVotos INTEGER not null,idVotacion BIGINT not null,colegioElectoral VARCHAR(255) not null,PRIMARY KEY(opcionEscogida, idVotacion, colegioElectoral, tipoVoto),FOREIGN KEY(opcionEscogida) REFERENCES OPCION(id),FOREIGN KEY(idVotacion) REFERENCES VOTACION(id),FOREIGN KEY(colegioElectoral) REFERENCES COLEGIOELECTORAL(codColegioElectoral))";
-/*
-		if (tablaExiste("VOTOS"))
-			stm.execute("delete from VOTOS");
-		if (tablaExiste("OPCION"))
-			stm.execute("delete from OPCION");
-		if (tablaExiste("VOTANTE"))
-			stm.execute("delete from VOTANTE");
-		if (tablaExiste("VOTACION"))
-			stm.execute("delete from VOTACION");
-		if (tablaExiste("CENSOS"))
-			stm.execute("delete from CENSOS");
-		if (tablaExiste("COLEGIOELECTORAL"))
-			stm.execute("delete from COLEGIOELECTORAL");
+		/*
+		 * if (tablaExiste("VOTOS")) stm.execute("delete from VOTOS"); if
+		 * (tablaExiste("OPCION")) stm.execute("delete from OPCION"); if
+		 * (tablaExiste("VOTANTE")) stm.execute("delete from VOTANTE"); if
+		 * (tablaExiste("VOTACION")) stm.execute("delete from VOTACION"); if
+		 * (tablaExiste("CENSOS")) stm.execute("delete from CENSOS"); if
+		 * (tablaExiste("COLEGIOELECTORAL")) stm.execute(
+		 * "delete from COLEGIOELECTORAL");
+		 * 
+		 * stm.execute(_createColegioElectoral); stm.execute(_createCensos);
+		 * stm.execute(_createVotante); stm.execute(_createVotacion);
+		 * stm.execute(_createOpcion); stm.execute(_createVotos);
+		 */
+		stm.execute(_createColegioElectoral);
+		stm.execute(_createCensos);
+		stm.execute(_createVotacion);
+		stm.execute(_createVotante);
+		stm.execute(_createOpcion);
+		stm.execute(_createVotos);
 
-		stm.execute(_createColegioElectoral);
-		stm.execute(_createCensos);
-		stm.execute(_createVotante);
-		stm.execute(_createVotacion);
-		stm.execute(_createOpcion);
-		stm.execute(_createVotos);
-*/
-		stm.execute(_createColegioElectoral);
-		stm.execute(_createCensos);
-		stm.execute(_createVotacion);
-		stm.execute(_createVotante);
-		stm.execute(_createOpcion);
-		stm.execute(_createVotos);
-		
 		rellenarColegioElectoral();
 		rellenarVotacion();
 		rellenarCensos();
@@ -129,17 +125,6 @@ public class Jdbc {
 		stm.close();
 		con.close();
 
-	}
-
-	private static boolean tablaExiste(String tabla) throws SQLException {
-		Connection conn = getConnection(); // get a DB connection from somewhere
-		ResultSet rset = conn.getMetaData().getTables(null, null, tabla, null);
-		boolean tableExists = false;
-		if (rset.next()) {
-			tableExists = true;
-		}
-		conn.close();
-		return tableExists;
 	}
 
 	private static void rellenarVotacion() {

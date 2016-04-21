@@ -32,7 +32,7 @@ public class Main {
 		return mv;
 	}
 
-	@RequestMapping(value = "/statistics", method = { RequestMethod.POST, RequestMethod.GET })
+	@RequestMapping(value = "/statistics",method = { RequestMethod.POST, RequestMethod.GET })
 	public ModelAndView estadisticas() {
 		ModelAndView mv = new ModelAndView("statistics");
 		Map<String, Integer> votos = Recuento.getMapaVotosTotales().get("España");
@@ -66,6 +66,7 @@ public class Main {
 		ModelAndView mv = new ModelAndView("statistics");
 		Map<String, Integer> votos = Recuento.getVotosPorComunidad(lugar);
 		mv.addObject("votos", votos);
+
 		mv.addObject("ciudades", ciudades);
 		mv.addObject("comunidades", comunidades);
 		mv.addObject("participacion", Recuento.getParticipacion(lugar));
